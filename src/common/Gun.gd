@@ -9,12 +9,10 @@ export var shooting = false
 export (float, 0.1, 2) var time_between_shots: float = 1.0 # seconds
 export var delay_first = true
 
+onready var bullet_spawn_point = $BulletSpawnPoint
+
 var was_shooting_before = false
 var time = 0
-
-
-func _ready():
-	print('Hey!')
 
 
 func _process(delta):
@@ -33,6 +31,11 @@ func _process(delta):
 
 
 func shoot():
-	# TODO
-	print('Hi! Im a gun and I just shot!')
-	pass
+	var instance: Bullet = bullet_scene.instance()
+	
+	instance.global_position = bullet_spawn_point.global_position
+	instance.angle = bullet_spawn_point.global_rotation
+	# instance.global_rotation = bullet_spawn_point.global_rotation
+	
+	var stage: Node2D = get_tree().get_nodes_in_group('stage')[0]
+	stage.add_child(instance)

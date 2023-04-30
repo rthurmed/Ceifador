@@ -30,7 +30,7 @@ position = Vector2( 78, 52 )
 texture = ExtResource( 2 )
 
 [node name="Gun" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, 6 )
+position = Vector2( 0, 8 )
 rotation = 1.5708
 bullet_scene = ExtResource( 5 )
 shooting = true
