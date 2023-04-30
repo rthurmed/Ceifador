@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/ruler.png" type="Texture" id=1]
+[ext_resource path="res://assets/basic-24x24.png" type="Texture" id=2]
+[ext_resource path="res://src/common/Gun.gd" type="Script" id=3]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Barrel" type="Sprite" parent="."]
+position = Vector2( 5.26235, 0.5 )
+scale = Vector2( 0.708333, 0.208333 )
+texture = ExtResource( 2 )
+hframes = 5
+vframes = 3
+frame = 6
+
+[node name="Grip" type="Sprite" parent="."]
+position = Vector2( -3.23765, 4 )
+rotation = 2.07512
+scale = Vector2( 0.374731, 0.151288 )
+texture = ExtResource( 2 )
+hframes = 5
+vframes = 3
+frame = 6
+
+[node name="Cylinder" type="Sprite" parent="."]
+position = Vector2( 1.76235, 3 )
+scale = Vector2( 0.333333, 0.25 )
+texture = ExtResource( 2 )
+hframes = 5
+vframes = 3
+frame = 6
+
+[node name="BulletSpawnPoint" type="Position2D" parent="."]
+position = Vector2( 13, 0 )
+
+[node name="Ruler" type="Sprite" parent="."]
+visible = false
+position = Vector2( 78, 62 )
+texture = ExtResource( 1 )

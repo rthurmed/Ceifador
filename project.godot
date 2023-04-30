@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://src/common/Bullet.gd"
+}, {
+"base": "Area2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://src/enemy/Enemy.gd"
+}, {
+"base": "Node2D",
+"class": "Gun",
+"language": "GDScript",
+"path": "res://src/common/Gun.gd"
+} ]
+_global_script_class_icons={
+"Bullet": "",
+"Enemy": "",
+"Gun": ""
+}
+
 [application]
 
 config/name="NachoLoko"
@@ -56,6 +78,8 @@ texture={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemies"
+2d_physics/layer_4="player_bullets"
+2d_physics/layer_5="enemy_bullets"
 
 [physics]
 
