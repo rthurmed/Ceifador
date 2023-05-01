@@ -7,7 +7,10 @@
 [node name="Gun" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Barrel" type="Sprite" parent="."]
+[node name="VisualInstance" type="Node2D" parent="."]
+visible = false
+
+[node name="Barrel" type="Sprite" parent="VisualInstance"]
 position = Vector2( 5.26235, 0.5 )
 scale = Vector2( 0.708333, 0.208333 )
 texture = ExtResource( 2 )
@@ -15,7 +18,7 @@ hframes = 5
 vframes = 3
 frame = 6
 
-[node name="Grip" type="Sprite" parent="."]
+[node name="Grip" type="Sprite" parent="VisualInstance"]
 position = Vector2( -3.23765, 4 )
 rotation = 2.07512
 scale = Vector2( 0.374731, 0.151288 )
@@ -24,7 +27,7 @@ hframes = 5
 vframes = 3
 frame = 6
 
-[node name="Cylinder" type="Sprite" parent="."]
+[node name="Cylinder" type="Sprite" parent="VisualInstance"]
 position = Vector2( 1.76235, 3 )
 scale = Vector2( 0.333333, 0.25 )
 texture = ExtResource( 2 )
