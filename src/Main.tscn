@@ -36,3 +36,8 @@ current = true
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 74, 251 )
+
+[node name="Limits" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Limits"]
+polygon = PoolVector2Array( 0, 0, 0, 288, 224, 288, 224, 0, 0, 0, -46, -47, 269, -38, 269, 345, -95, 350, -49, -48 )
