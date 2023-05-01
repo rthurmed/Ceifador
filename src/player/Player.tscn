@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/sfx/hitHurt-out-of-ammo-player.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/ball.png" type="Texture" id=12]
 [ext_resource path="res://assets/sfx/powerUp.wav" type="AudioStream" id=13]
-[ext_resource path="res://assets/sprites/player.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/player-outline.png" type="Texture" id=14]
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 8.0
@@ -62,7 +62,7 @@ width = 4.0
 default_color = Color( 0.431373, 0.933333, 1, 1 )
 
 [node name="Sprite" type="Sprite" parent="StealArea"]
-modulate = Color( 1, 1, 1, 0.247059 )
+modulate = Color( 1, 1, 1, 0.498039 )
 texture = ExtResource( 3 )
 
 [node name="Progress" type="TextureProgress" parent="StealArea"]

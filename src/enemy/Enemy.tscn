@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/ruler.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/enemy-tier1.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/enemy-tier1-outline.png" type="Texture" id=3]
 [ext_resource path="res://src/common/Gun.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/enemy/EnemyBullet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/common/Health.tscn" type="PackedScene" id=6]

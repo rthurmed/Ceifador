@@ -18,17 +18,10 @@ _data = {
 [node name="Main" type="Node2D" groups=["stage"]]
 
 [node name="Background" type="Node2D" parent="."]
-z_index = -5
-
-[node name="ColorRect" type="ColorRect" parent="Background"]
-margin_left = -10.0
-margin_top = -8.0
-margin_right = 234.0
-margin_bottom = 301.0
-color = Color( 0.215686, 0.145098, 0.219608, 1 )
+position = Vector2( 112, 144 )
+z_index = -20
 
 [node name="Sprite" type="Sprite" parent="Background"]
-position = Vector2( 112, 144 )
 texture = ExtResource( 4 )
 
 [node name="Enemy1Path" type="Path2D" parent="."]
