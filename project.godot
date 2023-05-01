@@ -30,6 +30,16 @@ _global_script_classes=[ {
 "path": "res://src/common/Health.gd"
 }, {
 "base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://modules/StateMachine/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://modules/StateMachine/StateMachine.gd"
+}, {
+"base": "Node",
 "class": "Util",
 "language": "GDScript",
 "path": "res://src/util/Util.gd"
@@ -39,6 +49,8 @@ _global_script_class_icons={
 "Enemy": "",
 "Gun": "",
 "Health": "",
+"State": "",
+"StateMachine": "",
 "Util": ""
 }
 
