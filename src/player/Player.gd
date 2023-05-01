@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 const SPEED = 200
 const SPEED_CHANGE_MULTIPLIER = 8 # the lower, the more slippery
+const DAMAGE_COLLISION = -3
 
 onready var gun: Gun = $Gun
 onready var health: Health = $Health
@@ -36,8 +37,10 @@ func apply_shooting(_delta):
 func _on_Area_area_entered(area):
 	if area.is_in_group(Bullet.GROUP):
 		health.hit()
+		area.queue_free()
 	
 	if area.is_in_group(Enemy.GROUP):
+		health.hit(DAMAGE_COLLISION)
 		# TODO: knockback
 		pass
 

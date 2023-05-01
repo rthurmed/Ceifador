@@ -58,5 +58,10 @@ delay_first = false
 position = Vector2( 0, 14 )
 max_hp = 20
 
+[node name="Energy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 16 )
+max_hp = 20
+color = Color( 0.431373, 0.933333, 1, 1 )
+
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
 [connection signal="dead" from="Health" to="." method="_on_Health_dead"]
