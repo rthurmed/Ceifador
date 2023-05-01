@@ -22,6 +22,7 @@ func _ready():
 func _on_Enemy_area_entered(area):
 	if area.is_in_group(Bullet.GROUP):
 		health.hit()
+		area.queue_free()
 
 
 func _on_Health_dead():
