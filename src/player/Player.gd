@@ -14,6 +14,7 @@ onready var energy: Health = $Energy
 onready var audio_damage = $Audio/Damage
 onready var audio_laser = $Audio/Laser
 onready var audio_out_of_ammo = $Audio/OutOfAmmo
+onready var audio_energy_heal = $Audio/EnergyHeal
 
 var movement = Vector2.ZERO
 
@@ -79,3 +80,4 @@ func _on_Health_damage():
 
 func _on_StealArea_stole_energy():
 	energy.heal(ENERGY_HEAL_BY_STEALING)
+	audio_energy_heal.play()
