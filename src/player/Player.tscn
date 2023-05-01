@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/common/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/PlayerBullet.tscn" type="PackedScene" id=2]
@@ -9,12 +9,14 @@
 [ext_resource path="res://assets/sfx/laserShoot-player.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sfx/explosion-player.wav" type="AudioStream" id=8]
 [ext_resource path="res://src/util/RandomPitchAudio.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/player/StealArea.gd" type="Script" id=10]
+[ext_resource path="res://assets/sfx/hitHurt-out-of-ammo-player.wav" type="AudioStream" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 32.0
+radius = 40.0
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 0
@@ -45,9 +47,24 @@ collision_mask = 20
 shape = SubResource( 1 )
 
 [node name="StealArea" type="Area2D" parent="."]
+z_index = -1
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="StealArea"]
+modulate = Color( 1, 1, 1, 0.247059 )
+position = Vector2( 3.33786e-06, 3.39746e-06 )
+scale = Vector2( 3.33333, 3.33333 )
+texture = ExtResource( 3 )
+hframes = 5
+vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StealArea"]
 shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="StealArea"]
+wait_time = 0.4
 
 [node name="Gun" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -9 )
@@ -63,8 +80,8 @@ max_hp = 20
 
 [node name="Energy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 12 )
-max_hp = 20
 color = Color( 0.431373, 0.933333, 1, 1 )
+immortal = true
 
 [node name="Audio" type="Node" parent="."]
 
@@ -76,7 +93,15 @@ volume_db = -15.0
 stream = ExtResource( 8 )
 volume_db = -10.0
 
+[node name="OutOfAmmo" parent="Audio" instance=ExtResource( 9 )]
+stream = ExtResource( 11 )
+volume_db = -10.0
+
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
+[connection signal="area_entered" from="StealArea" to="StealArea" method="_on_StealArea_area_entered"]
+[connection signal="area_exited" from="StealArea" to="StealArea" method="_on_StealArea_area_exited"]
+[connection signal="stole_energy" from="StealArea" to="." method="_on_StealArea_stole_energy"]
+[connection signal="timeout" from="StealArea/Timer" to="StealArea" method="_on_Timer_timeout"]
 [connection signal="shot" from="Gun" to="." method="_on_Gun_shot"]
 [connection signal="damage" from="Health" to="." method="_on_Health_damage"]
 [connection signal="dead" from="Health" to="." method="_on_Health_dead"]
