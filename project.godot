@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Health",
 "language": "GDScript",
 "path": "res://src/common/Health.gd"
+}, {
+"base": "Node",
+"class": "Util",
+"language": "GDScript",
+"path": "res://src/util/Util.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
 "Enemy": "",
 "Gun": "",
-"Health": ""
+"Health": "",
+"Util": ""
 }
 
 [application]

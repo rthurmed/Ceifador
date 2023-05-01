@@ -8,6 +8,7 @@ const COLOR_GRABBED = Color('3f6eeeff')
 
 onready var timer: Timer = $Timer
 onready var sprite = $Sprite
+onready var progress = $Progress
 
 var target = null
 
@@ -18,13 +19,15 @@ func _ready():
 
 func _process(_delta):
 	# TODO: draw line to target
+	progress.value = Util.timer_percent(timer) * 100
 	pass
 
 
 func _on_StealArea_area_entered(area):
+	if target != null: return
 	target = area
 	timer.start()
-	sprite.modulate = COLOR_GRABBED
+	# sprite.modulate = COLOR_GRABBED
 
 
 func _on_StealArea_area_exited(area: Area2D):
@@ -34,7 +37,7 @@ func _on_StealArea_area_exited(area: Area2D):
 	timer.stop()
 	
 	target = null
-	sprite.modulate = COLOR_EMPTY
+	# sprite.modulate = COLOR_EMPTY
 
 
 func _on_Timer_timeout():
