@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/common/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/PlayerBullet.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://src/player/Player.gd" type="Script" id=4]
 [ext_resource path="res://src/common/Health.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/ruler.png" type="Texture" id=6]
+[ext_resource path="res://assets/sfx/laserShoot-player.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sfx/explosion-player.wav" type="AudioStream" id=8]
+[ext_resource path="res://src/util/RandomPitchAudio.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -55,13 +58,25 @@ time_between_shots = 0.4
 delay_first = false
 
 [node name="Health" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, 14 )
+position = Vector2( 0, 10 )
 max_hp = 20
 
 [node name="Energy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, 16 )
+position = Vector2( 0, 12 )
 max_hp = 20
 color = Color( 0.431373, 0.933333, 1, 1 )
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="Laser" parent="Audio" instance=ExtResource( 9 )]
+stream = ExtResource( 7 )
+volume_db = -15.0
+
+[node name="Damage" parent="Audio" instance=ExtResource( 9 )]
+stream = ExtResource( 8 )
+volume_db = -10.0
+
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
+[connection signal="shot" from="Gun" to="." method="_on_Gun_shot"]
+[connection signal="damage" from="Health" to="." method="_on_Health_damage"]
 [connection signal="dead" from="Health" to="." method="_on_Health_dead"]

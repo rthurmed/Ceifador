@@ -4,6 +4,8 @@ class_name Gun
 # GUN
 # keep shooting when enabled
 
+signal shot
+
 export var bullet_scene: PackedScene
 export var shooting = false
 export (float, 0.1, 2) var time_between_shots: float = 1.0 # seconds
@@ -35,7 +37,8 @@ func shoot():
 	
 	instance.global_position = bullet_spawn_point.global_position
 	instance.angle = bullet_spawn_point.global_rotation
-	# instance.global_rotation = bullet_spawn_point.global_rotation
 	
 	var stage: Node2D = get_tree().get_nodes_in_group('stage')[0]
 	stage.add_child(instance)
+	
+	emit_signal("shot")

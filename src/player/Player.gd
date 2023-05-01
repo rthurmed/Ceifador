@@ -7,6 +7,8 @@ const DAMAGE_COLLISION = -3
 
 onready var gun: Gun = $Gun
 onready var health: Health = $Health
+onready var audio_damage = $Audio/Damage
+onready var audio_laser = $Audio/Laser
 
 var movement = Vector2.ZERO
 
@@ -48,3 +50,11 @@ func _on_Area_area_entered(area):
 func _on_Health_dead():
 	queue_free()
 	# TODO: fail state
+
+
+func _on_Gun_shot():
+	audio_laser.play()
+
+
+func _on_Health_damage():
+	audio_damage.play()
