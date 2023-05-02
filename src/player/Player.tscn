@@ -26,7 +26,7 @@ height = 6.0
 [sub_resource type="CircleShape2D" id=2]
 radius = 40.0
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 collision_mask = 0
 script = ExtResource( 4 )
 

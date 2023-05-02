@@ -99,12 +99,9 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "queue_free"
-} ]
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Audio/Death:playing")
@@ -190,3 +187,4 @@ anims/death = SubResource( 2 )
 [connection signal="area_entered" from="." to="." method="_on_Enemy_area_entered"]
 [connection signal="shot" from="Gun" to="." method="_on_Gun_shot"]
 [connection signal="dead" from="Health" to="." method="_on_Health_dead"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

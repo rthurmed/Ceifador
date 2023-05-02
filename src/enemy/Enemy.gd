@@ -5,6 +5,8 @@ const COLLISION_LAYER = 4 # being the enemy
 const COLLISION_MASK = 8 # get hit by player bullets
 const GROUP = 'enemy'
 
+signal dead
+
 onready var gun = $Gun
 onready var health = $Health
 onready var audio_damage = $Audio/Damage
@@ -37,3 +39,9 @@ func _on_Gun_shot():
 
 func _on_Health_damage():
 	audio_damage.play()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "death":
+		emit_signal("dead")
+		queue_free()

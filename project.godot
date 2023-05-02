@@ -29,6 +29,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/common/Health.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/player/Player.gd"
+}, {
+"base": "Node2D",
+"class": "Stage",
+"language": "GDScript",
+"path": "res://src/stages/Stage.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
@@ -49,6 +59,8 @@ _global_script_class_icons={
 "Enemy": "",
 "Gun": "",
 "Health": "",
+"Player": "",
+"Stage": "",
 "State": "",
 "StateMachine": "",
 "Util": ""
