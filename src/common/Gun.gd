@@ -6,15 +6,21 @@ class_name Gun
 
 signal shot
 
+const GROUP = 'gun'
+
 export var bullet_scene: PackedScene
 export var shooting = false
 export (float, 0.1, 2) var time_between_shots: float = 1.0 # seconds
 export var delay_first = true
+export (float) var time = 0.0
 
 onready var bullet_spawn_point = $BulletSpawnPoint
 
 var was_shooting_before = false
-var time = 0
+
+
+func _ready():
+	add_to_group(GROUP)
 
 
 func _process(delta):

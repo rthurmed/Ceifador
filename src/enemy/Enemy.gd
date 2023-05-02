@@ -7,11 +7,12 @@ const GROUP = 'enemy'
 
 signal dead
 
-onready var gun = $Gun
 onready var health = $Health
 onready var audio_damage = $Audio/Damage
 onready var audio_laser = $Audio/Laser
 onready var animation = $AnimationPlayer
+
+var my_guns = []
 
 
 func _ready():
@@ -19,6 +20,19 @@ func _ready():
 	collision_mask = COLLISION_MASK
 	
 	add_to_group(GROUP)
+	
+	var _ok
+	_ok = connect("area_entered", self, '_on_Enemy_area_entered')
+	_ok = health.connect("dead", self, '_on_Health_dead')
+	_ok = health.connect("damage", self, '_on_Health_damage')
+	_ok = animation.connect("animation_finished", self, '_on_AnimationPlayer_animation_finished')
+	
+	# TODO: maybe pass the sound to the gun instead of doing all that
+	var all_guns = get_tree().get_nodes_in_group(Gun.GROUP)
+	for that_gun in all_guns:
+		if is_a_parent_of(that_gun):
+			my_guns.append(that_gun)
+			that_gun.connect("shot", self, '_on_Gun_shot')
 
 
 func _on_Enemy_area_entered(area):
@@ -28,13 +42,15 @@ func _on_Enemy_area_entered(area):
 		area.queue_free()
 
 
-func _on_Health_dead():
-	animation.play("death")
-
-
 func _on_Gun_shot():
 	audio_laser.pitch_scale = rand_range(0.8, 1.2)
 	audio_laser.play()
+
+
+func _on_Health_dead():
+	animation.play("death")
+	for that_gun in my_guns:
+		that_gun.shooting = false
 
 
 func _on_Health_damage():
