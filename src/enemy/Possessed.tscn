@@ -1,49 +1,23 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/sfx/explosion-enemy.wav" type="AudioStream" id=1]
 [ext_resource path="res://assets/sfx/explosion-death-enemy.wav" type="AudioStream" id=2]
-[ext_resource path="res://src/enemy/pattern/Rotating.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/ruler.png" type="Texture" id=4]
-[ext_resource path="res://assets/sfx/laserShoot-enemy.wav" type="AudioStream" id=5]
-[ext_resource path="res://src/enemy/Enemy.gd" type="Script" id=6]
-[ext_resource path="res://src/common/Health.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/util/RandomPitchAudio.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/common/Gun.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/enemy/EnemyBullet.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/sprites/enemy-tier2-Sheet.png" type="Texture" id=11]
+[ext_resource path="res://assets/ruler.png" type="Texture" id=3]
+[ext_resource path="res://assets/sfx/laserShoot-enemy.wav" type="AudioStream" id=4]
+[ext_resource path="res://src/enemy/Enemy.gd" type="Script" id=5]
+[ext_resource path="res://assets/sprites/enemy-three-arms.png" type="Texture" id=6]
+[ext_resource path="res://src/common/Health.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/util/RandomPitchAudio.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/common/Gun.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/enemy/EnemyBullet.tscn" type="PackedScene" id=11]
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 40, 40 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 11 )
-region = Rect2( 40, 0, 40, 40 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 11 )
-region = Rect2( 80, 0, 40, 40 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 11 )
-region = Rect2( 120, 0, 40, 40 )
-
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="CapsuleShape2D" id=9]
-radius = 12.0
-height = 6.0
+[sub_resource type="CircleShape2D" id=4]
+radius = 13.0
 
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Rotating/Gun:shooting")
+tracks/0/path = NodePath("Gun:shooting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -154,67 +128,59 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[node name="Mage" type="Area2D"]
+[node name="Possessed" type="Area2D"]
 collision_layer = 4
 collision_mask = 8
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 
 [node name="Ruler" type="Sprite" parent="."]
 visible = false
 position = Vector2( 52, 52 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 8 )
-frame = 2
-playing = true
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
+shape = SubResource( 4 )
+
+[node name="Gun" parent="." instance=ExtResource( 10 )]
+position = Vector2( 0, 2 )
 rotation = 1.5708
-shape = SubResource( 9 )
-
-[node name="Rotating" parent="." instance=ExtResource( 3 )]
-
-[node name="Gun" parent="Rotating" instance=ExtResource( 9 )]
-rotation = 1.5708
-bullet_scene = ExtResource( 10 )
+bullet_scene = ExtResource( 11 )
 shooting = true
 time_between_shots = 0.6
 
-[node name="Gun2" parent="Rotating" instance=ExtResource( 9 )]
-position = Vector2( -9.53674e-07, 0 )
-rotation = -3.14159
-bullet_scene = ExtResource( 10 )
+[node name="Gun2" parent="." instance=ExtResource( 10 )]
+position = Vector2( -9.53674e-07, 2 )
+rotation = 2.0944
+bullet_scene = ExtResource( 11 )
 shooting = true
 time_between_shots = 0.6
 
-[node name="Gun3" parent="Rotating" instance=ExtResource( 9 )]
-rotation = -1.5708
-bullet_scene = ExtResource( 10 )
+[node name="Gun3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 0, 2 )
+rotation = 1.0472
+bullet_scene = ExtResource( 11 )
 shooting = true
 time_between_shots = 0.6
 
-[node name="Gun4" parent="Rotating" instance=ExtResource( 9 )]
-bullet_scene = ExtResource( 10 )
-shooting = true
-time_between_shots = 0.6
-
-[node name="Health" parent="." instance=ExtResource( 7 )]
+[node name="Health" parent="." instance=ExtResource( 8 )]
 position = Vector2( 0, -17 )
-max_hp = 3
+max_hp = 6
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="Laser" parent="Audio" instance=ExtResource( 8 )]
-stream = ExtResource( 5 )
+[node name="Laser" parent="Audio" instance=ExtResource( 9 )]
+stream = ExtResource( 4 )
 volume_db = -20.0
 
-[node name="Damage" parent="Audio" instance=ExtResource( 8 )]
+[node name="Damage" parent="Audio" instance=ExtResource( 9 )]
 stream = ExtResource( 1 )
 volume_db = -10.0
 
-[node name="Death" parent="Audio" instance=ExtResource( 8 )]
+[node name="Death" parent="Audio" instance=ExtResource( 9 )]
 stream = ExtResource( 2 )
 volume_db = -10.0
 

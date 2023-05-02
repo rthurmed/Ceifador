@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/stages/Stage.gd" type="Script" id=1]
 [ext_resource path="res://src/util/AutoPathFollow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/enemy/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/enemy/Mage.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/enemy/Possessed.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=3]
 _data = {
@@ -49,8 +50,6 @@ curve = SubResource( 5 )
 
 [node name="AutoPathFollow" parent="Enemy1Path3" instance=ExtResource( 2 )]
 position = Vector2( 310, 24 )
-rotation = 2.29911
 loop = false
 
-[node name="Enemy" parent="Enemy1Path3/AutoPathFollow" instance=ExtResource( 3 )]
-rotation = -2.29911
+[node name="Possessed" parent="Enemy1Path3/AutoPathFollow" instance=ExtResource( 5 )]
