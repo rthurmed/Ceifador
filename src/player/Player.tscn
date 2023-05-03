@@ -20,8 +20,8 @@ radius = 8.0
 height = 6.0
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 8.0
-height = 6.0
+radius = 6.0
+height = 8.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 40.0
@@ -37,7 +37,6 @@ texture = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -2 )
-z_index = 1
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
