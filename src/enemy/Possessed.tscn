@@ -150,21 +150,18 @@ position = Vector2( 0, 2 )
 rotation = 1.5708
 bullet_scene = ExtResource( 11 )
 shooting = true
-time_between_shots = 0.6
 
 [node name="Gun2" parent="." instance=ExtResource( 10 )]
 position = Vector2( -9.53674e-07, 2 )
 rotation = 2.0944
 bullet_scene = ExtResource( 11 )
 shooting = true
-time_between_shots = 0.6
 
 [node name="Gun3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 0, 2 )
 rotation = 1.0472
 bullet_scene = ExtResource( 11 )
 shooting = true
-time_between_shots = 0.6
 
 [node name="Health" parent="." instance=ExtResource( 8 )]
 position = Vector2( 0, -17 )
