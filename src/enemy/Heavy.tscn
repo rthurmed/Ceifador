@@ -132,15 +132,82 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Gun" parent="." instance=ExtResource( 6 )]
-position = Vector2( 0, 8 )
+[node name="GunsCenter" type="Node2D" parent="."]
+
+[node name="Gun1" parent="GunsCenter" instance=ExtResource( 6 )]
 rotation = 1.5708
 bullet_scene = ExtResource( 8 )
 shooting = true
+time_between_shots = 1.4
+
+[node name="Gun2" parent="GunsCenter" instance=ExtResource( 6 )]
+rotation = 2.0944
+bullet_scene = ExtResource( 8 )
+shooting = true
+time_between_shots = 1.4
+
+[node name="Gun3" parent="GunsCenter" instance=ExtResource( 6 )]
+rotation = 2.61799
+bullet_scene = ExtResource( 8 )
+shooting = true
+time_between_shots = 1.4
+
+[node name="Gun4" parent="GunsCenter" instance=ExtResource( 6 )]
+rotation = 3.14159
+bullet_scene = ExtResource( 8 )
+shooting = true
+time_between_shots = 1.4
+
+[node name="Gun5" parent="GunsCenter" instance=ExtResource( 6 )]
+rotation = 3.66519
+bullet_scene = ExtResource( 8 )
+shooting = true
+time_between_shots = 1.4
+
+[node name="Gun6" parent="GunsCenter" instance=ExtResource( 6 )]
+rotation = 4.18879
+bullet_scene = ExtResource( 8 )
+shooting = true
+time_between_shots = 1.4
+
+[node name="Gun7" parent="GunsCenter" instance=ExtResource( 6 )]
+rotation = 4.71239
+bullet_scene = ExtResource( 8 )
+shooting = true
+time_between_shots = 1.4
+
+[node name="Gun8" parent="GunsCenter" instance=ExtResource( 6 )]
+rotation = 5.23599
+bullet_scene = ExtResource( 8 )
+shooting = true
+time_between_shots = 1.4
+
+[node name="Gun9" parent="GunsCenter" instance=ExtResource( 6 )]
+rotation = 5.75959
+bullet_scene = ExtResource( 8 )
+shooting = true
+time_between_shots = 1.4
+
+[node name="Gun10" parent="GunsCenter" instance=ExtResource( 6 )]
+rotation = 6.28319
+bullet_scene = ExtResource( 8 )
+shooting = true
+time_between_shots = 1.4
+
+[node name="Gun11" parent="GunsCenter" instance=ExtResource( 6 )]
+rotation = 6.80678
+bullet_scene = ExtResource( 8 )
+shooting = true
+time_between_shots = 1.4
+
+[node name="Gun12" parent="GunsCenter" instance=ExtResource( 6 )]
+rotation = 7.33038
+bullet_scene = ExtResource( 8 )
+shooting = true
+time_between_shots = 1.4
 
 [node name="Health" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, -17 )
-max_hp = 3
 
 [node name="Audio" type="Node" parent="."]
 
