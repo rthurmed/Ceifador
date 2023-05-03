@@ -12,11 +12,18 @@ onready var stage_holder = $StageHolder
 var stage_max_idx = 2
 var stage_current_idx = 0
 var stage_current_instance: Stage = null
+var stage_current_enemies = []
 var stage_current_enemy_count = 0
 
 
 func _ready():
 	load_stage(0)
+
+
+func _process(_delta):
+	if Input.is_action_just_released("cheat_skip"):
+		for enemy in stage_current_enemies:
+			enemy.health.hit(-9999)
 
 
 func load_stage(stage_idx):
@@ -35,6 +42,7 @@ func load_stage(stage_idx):
 	var enemies = get_tree().get_nodes_in_group(Enemy.GROUP)
 	
 	stage_current_enemy_count = len(enemies)
+	stage_current_enemies = enemies
 	
 	for enemy in enemies:
 		_ok = enemy.connect("dead", self, "_on_Enemy_dead")
