@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/sprites/icons/player-life.png" type="Texture" id=1]
+
+[node name="TextureRect1" type="TextureRect"]
+margin_right = 10.0
+margin_bottom = 18.0
+texture = ExtResource( 1 )

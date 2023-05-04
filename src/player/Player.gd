@@ -9,6 +9,8 @@ const ENERGY_COST_BULLET = 1
 const ENERGY_COST_DASH = 3
 const ENERGY_HEAL_BY_STEALING = 2
 
+signal dead
+
 onready var gun: Gun = $Gun
 onready var health: Health = $Health
 onready var energy: Health = $Energy
@@ -64,13 +66,14 @@ func _on_Area_area_entered(area):
 	
 	if area.is_in_group(Enemy.GROUP):
 		health.hit(DAMAGE_COLLISION)
-		# TODO: knockback
+		# TODO: knockback?
 		pass
 
 
 func _on_Health_dead():
+	emit_signal("dead")
 	queue_free()
-	# TODO: fail state
+	# TODO: fail state?
 
 
 func _on_Gun_shot():

@@ -93,7 +93,6 @@ time_between_shots = 0.4
 
 [node name="Health" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 10 )
-max_hp = 20
 
 [node name="Energy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 12 )
