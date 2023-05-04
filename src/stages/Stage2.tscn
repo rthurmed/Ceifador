@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/stages/Stage.gd" type="Script" id=1]
+[ext_resource path="res://src/util/AutoPathFollow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/enemy/Enemy.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -12, 90, 0, 0, 0, 0, -9, 124, 0, 0, 0, 0, 17, 150, 0, 0, 0, 0, 80, 168, 0, 0, 0, 0, 135, 146, 0, 0, 0, 0, 156, 114, 0, 0, 0, 0, 158, 70, 0, 0, 0, 0, 148, 40, 0, 0, 0, 0, 113, 10, 0, 0, 0, 0, 32, -31 )
+}
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -103, 47, 0, 0, 0, 0, -27, 127, 0, 0, 0, 0, 74, 146, 0, 0, 0, 0, 239, 123, 0, 0, 0, 0, 237, 94, 0, 0, 0, 0, 165, 51, 0, 0, 0, 0, 175, 11, 0, 0, 0, 0, 302, -31 )
+}
+
+[node name="Stage2" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Enemy1Path2" type="Path2D" parent="."]
+position = Vector2( -40, -39 )
+curve = SubResource( 4 )
+
+[node name="AutoPathFollow" parent="Enemy1Path2" instance=ExtResource( 2 )]
+position = Vector2( -12, 90 )
+
+[node name="Enemy" parent="Enemy1Path2/AutoPathFollow" instance=ExtResource( 3 )]
+
+[node name="AutoPathFollow2" parent="Enemy1Path2" instance=ExtResource( 2 )]
+position = Vector2( -9.07259, 121.924 )
+offset = 32.0
+
+[node name="Enemy" parent="Enemy1Path2/AutoPathFollow2" instance=ExtResource( 3 )]
+
+[node name="Enemy1Path4" type="Path2D" parent="."]
+position = Vector2( -40, 63 )
+curve = SubResource( 6 )
+
+[node name="AutoPathFollow" parent="Enemy1Path4" instance=ExtResource( 2 )]
+position = Vector2( -103, 47 )
+
+[node name="Enemy" parent="Enemy1Path4/AutoPathFollow" instance=ExtResource( 3 )]
+
+[node name="AutoPathFollow2" parent="Enemy1Path4" instance=ExtResource( 2 )]
+position = Vector2( -80.9742, 70.185 )
+offset = 32.0
+
+[node name="Enemy" parent="Enemy1Path4/AutoPathFollow2" instance=ExtResource( 3 )]
+
+[node name="AutoPathFollow3" parent="Enemy1Path4" instance=ExtResource( 2 )]
+position = Vector2( -58.9519, 93.3664 )
+offset = 64.0
+
+[node name="Enemy" parent="Enemy1Path4/AutoPathFollow3" instance=ExtResource( 3 )]
+
+[node name="AutoPathFollow4" parent="Enemy1Path4" instance=ExtResource( 2 )]
+position = Vector2( -36.8855, 116.594 )
+offset = 96.0
+
+[node name="Enemy" parent="Enemy1Path4/AutoPathFollow4" instance=ExtResource( 3 )]
