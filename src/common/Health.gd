@@ -8,7 +8,7 @@ signal updated
 
 export var max_hp = 10
 export var color = Color('e14141')
-export var immortal = false
+export var immune_to_damage = false
 
 onready var bar = $Bar
 
@@ -32,13 +32,14 @@ func transact(amount):
 
 
 func hit(amount = -1):
+	if immune_to_damage: return
 	if not alive: return
 	
 	transact(amount)
 	
 	emit_signal("damage")
 	
-	if not immortal and alive and hp <= 0:
+	if alive and hp <= 0:
 		emit_signal("dead")
 		alive = false
 

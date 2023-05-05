@@ -97,7 +97,6 @@ position = Vector2( 0, 10 )
 [node name="Energy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 12 )
 color = Color( 0.431373, 0.933333, 1, 1 )
-immortal = true
 
 [node name="Audio" type="Node" parent="."]
 

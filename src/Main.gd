@@ -10,7 +10,10 @@ const stages = [TestStage1, TestStage2, TestStage3]
 
 onready var stage_holder = $StageHolder
 onready var retries_ui = $UI/Retries
-onready var player_holder = $PlayerHolder
+onready var player_path_follower = $PlayerPath/AutoPathFollow
+onready var player_holder = $PlayerPath/AutoPathFollow/PlayerHolder
+onready var player_move_delay = $PlayerPath/PlayerMoveDelay
+onready var player_damage_delay = $PlayerPath/PlayerDamageDelay
 
 var stage_max_idx = 2
 var stage_current_idx = 0
@@ -18,6 +21,7 @@ var stage_current_instance: Stage = null
 var stage_current_enemies = []
 var stage_current_enemy_count = 0
 var retries = 4
+var player_instance: Player
 
 
 func _ready():
@@ -33,11 +37,18 @@ func _process(_delta):
 
 
 func reset_player():
-	# TODO: SPAWN ANIMATION WITH INVINCIBILITY!!!!
-	# maybe it goes on the player scene
-	var instance = PlayerScene.instance()
-	instance.connect("dead", self, "_on_Player_dead")
-	player_holder.call_deferred("add_child", instance)
+	player_path_follower.offset = 0
+	player_instance = PlayerScene.instance()
+	
+	player_instance.modulate = Color(1, 1, 1, .5)
+	player_instance.player_managed = false
+	player_instance.immune_to_damage = true
+	
+	var _ok
+	_ok = player_instance.connect("dead", self, "_on_Player_dead")
+	_ok = player_instance.connect("tree_entered", self, "_on_Player_tree_entered")
+	
+	player_holder.call_deferred("add_child", player_instance)
 
 
 func load_stage(stage_idx):
@@ -85,3 +96,17 @@ func _on_Player_dead():
 	
 	reset_player()
 	retries_ui.set_amount(retries)
+
+
+func _on_Player_tree_entered():
+	player_move_delay.start()
+	player_damage_delay.start()
+
+
+func _on_PlayerMoveDelay_timeout():
+	player_instance.player_managed = true
+
+
+func _on_PlayerDamageDelay_timeout():
+	player_instance.modulate = Color(1, 1, 1, 1)
+	player_instance.immune_to_damage = false

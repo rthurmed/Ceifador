@@ -11,6 +11,9 @@ const ENERGY_HEAL_BY_STEALING = 2
 
 signal dead
 
+export var player_managed = true
+export var immune_to_damage = false
+
 onready var gun: Gun = $Gun
 onready var health: Health = $Health
 onready var energy: Health = $Energy
@@ -23,6 +26,7 @@ var movement = Vector2.ZERO
 
 
 func _process(delta):
+	if not player_managed: return
 	apply_movement(delta, SPEED)
 	apply_shooting(delta)
 
@@ -60,6 +64,8 @@ func apply_shooting(_delta):
 
 
 func _on_Area_area_entered(area):
+	if immune_to_damage: return
+	
 	if area.is_in_group(Bullet.GROUP):
 		health.hit()
 		area.queue_free()
