@@ -8,7 +8,7 @@ const DAMAGE_COLLISION = -3
 const ENERGY_COST_BULLET = 1
 const ENERGY_COST_DASH = 3
 const ENERGY_HEAL_BY_STEALING = 2
-const HEAL_BY_DROPPED_HP = 3
+const HEAL_BY_DROPPED_HP = 10
 
 signal dead
 
