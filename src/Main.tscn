@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/background/Layer 1.png" type="Texture" id=2]
@@ -13,6 +13,12 @@
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 112, 365, 0, 0, 0, 0, 112, 238 )
 }
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 36, 181 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 152.5, 18.5 )
 
 [node name="Main" type="Node2D" groups=["stage"]]
 script = ExtResource( 1 )
@@ -66,8 +72,21 @@ loop = false
 
 [node name="Limits" type="StaticBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Limits"]
-polygon = PoolVector2Array( 0, 0, 0, 288, 224, 287, 224, 0, 0, 0, -46, -47, 269, -38, 269, 345, -95, 350, -49, -48 )
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Limits"]
+position = Vector2( -36, 142 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Limits"]
+position = Vector2( 260, 142 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Limits"]
+position = Vector2( 115.5, -18.5 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Limits"]
+position = Vector2( 112, 306 )
+shape = SubResource( 3 )
 one_way_collision = true
 
 [node name="UI" type="CanvasLayer" parent="."]
