@@ -23,7 +23,7 @@ onready var player_damage_delay = $PlayerPath/PlayerDamageDelay
 onready var audio_pass_stage = $Audio/PassStage
 onready var audio_player_death = $Audio/PlayerDeath
 
-var stage_max_idx = len(stages)
+var stage_max_idx = len(stages) - 1
 var stage_current_idx = 0
 var stage_current_instance: Stage = null
 var stage_current_enemies = []
