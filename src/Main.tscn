@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/background/Layer 1.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/BackgroundParallax.gd" type="Script" id=5]
 [ext_resource path="res://src/UI-Retries.gd" type="Script" id=6]
 [ext_resource path="res://src/ui/RetryIcon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://modules/Pause/Pause.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -101,6 +102,8 @@ margin_right = 38.0
 [node name="RetryIcon4" parent="UI/Retries/HBoxContainer" instance=ExtResource( 7 )]
 margin_left = 42.0
 margin_right = 52.0
+
+[node name="Pause" parent="." instance=ExtResource( 8 )]
 
 [connection signal="timeout" from="PlayerPath/PlayerMoveDelay" to="." method="_on_PlayerMoveDelay_timeout"]
 [connection signal="timeout" from="PlayerPath/PlayerDamageDelay" to="." method="_on_PlayerDamageDelay_timeout"]
