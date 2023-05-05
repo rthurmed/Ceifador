@@ -41,6 +41,7 @@ curve = SubResource( 4 )
 position = Vector2( 11, 96 )
 
 [node name="Mage" parent="Enemy1Path2/AutoPathFollow" instance=ExtResource( 4 )]
+should_drop_hp = true
 
 [node name="Enemy1Path3" type="Path2D" parent="."]
 position = Vector2( -40, 63 )

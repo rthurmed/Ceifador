@@ -53,6 +53,7 @@ position = Vector2( 3, -90 )
 loop = false
 
 [node name="Heavy" parent="Enemy1Path3/AutoPathFollow" instance=ExtResource( 5 )]
+should_drop_hp = true
 
 [node name="Enemy1Path5" type="Path2D" parent="."]
 position = Vector2( -40, 63 )
