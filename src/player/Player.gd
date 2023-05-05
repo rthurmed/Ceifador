@@ -8,7 +8,7 @@ const DAMAGE_COLLISION = -3
 const ENERGY_COST_BULLET = 1
 const ENERGY_COST_DASH = 3
 const ENERGY_HEAL_BY_STEALING = 2
-const HEAL_BY_DROPPED_HP = 2
+const HEAL_BY_DROPPED_HP = 3
 
 signal dead
 
@@ -22,6 +22,7 @@ onready var audio_damage = $Audio/Damage
 onready var audio_laser = $Audio/Laser
 onready var audio_out_of_ammo = $Audio/OutOfAmmo
 onready var audio_energy_heal = $Audio/EnergyHeal
+onready var audio_hp_heal = $Audio/HpHeal
 
 var movement = Vector2.ZERO
 
@@ -70,7 +71,7 @@ func _on_Area_area_entered(area):
 	if area.is_in_group(Drop.GROUP):
 		health.heal(HEAL_BY_DROPPED_HP)
 		area.queue_free()
-		# TODO: play healing sound
+		audio_hp_heal.play()
 	
 	if area.is_in_group(Bullet.GROUP):
 		health.hit()
