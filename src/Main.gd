@@ -20,6 +20,8 @@ onready var player_path_follower = $PlayerPath/AutoPathFollow
 onready var player_holder = $PlayerPath/AutoPathFollow/PlayerHolder
 onready var player_move_delay = $PlayerPath/PlayerMoveDelay
 onready var player_damage_delay = $PlayerPath/PlayerDamageDelay
+onready var audio_pass_stage = $Audio/PassStage
+onready var audio_player_death = $Audio/PlayerDeath
 
 var stage_max_idx = len(stages)
 var stage_current_idx = 0
@@ -84,6 +86,7 @@ func _on_Current_Stage__tree_exited():
 		# TODO: call end screen
 		return
 	
+	audio_pass_stage.play()
 	load_stage(stage_current_idx + 1)
 
 
@@ -99,6 +102,8 @@ func _on_Player_dead():
 		return
 	
 	retries = retries - 1
+	
+	audio_player_death.play()
 	
 	reset_player()
 	retries_ui.set_amount(retries)

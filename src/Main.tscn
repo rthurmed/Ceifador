@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/background/Layer 1.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://src/UI-Retries.gd" type="Script" id=6]
 [ext_resource path="res://src/ui/RetryIcon.tscn" type="PackedScene" id=7]
 [ext_resource path="res://modules/Pause/Pause.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sfx/game-pass-stage-pickupCoin.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sfx/player-death-explosion.wav" type="AudioStream" id=10]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -123,6 +125,16 @@ margin_left = 42.0
 margin_right = 52.0
 
 [node name="Pause" parent="." instance=ExtResource( 8 )]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="PassStage" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 9 )
+volume_db = -15.0
+
+[node name="PlayerDeath" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 10 )
+volume_db = -10.0
 
 [connection signal="timeout" from="PlayerPath/PlayerMoveDelay" to="." method="_on_PlayerMoveDelay_timeout"]
 [connection signal="timeout" from="PlayerPath/PlayerDamageDelay" to="." method="_on_PlayerDamageDelay_timeout"]
