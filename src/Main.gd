@@ -2,11 +2,17 @@ extends Node2D
 
 
 const PlayerScene = preload("res://src/player/Player.tscn")
-const TestStage1 = preload("res://src/stages/TestStage1.tscn")
-const TestStage2 = preload("res://src/stages/TestStage2.tscn")
-const TestStage3 = preload("res://src/stages/TestStage3.tscn")
 
-const stages = [TestStage1, TestStage2, TestStage3]
+const stages = [
+	preload("res://src/stages/Stage1.tscn"),
+	preload("res://src/stages/Stage4.tscn"),
+	preload("res://src/stages/Stage5.tscn"),
+	preload("res://src/stages/Stage6.tscn"),
+	preload("res://src/stages/Stage9.tscn"),
+	preload("res://src/stages/Stage8.tscn"),
+	preload("res://src/stages/Stage7.tscn"),
+	# TODO: Final Boss
+]
 
 onready var stage_holder = $StageHolder
 onready var retries_ui = $UI/Retries
@@ -15,7 +21,7 @@ onready var player_holder = $PlayerPath/AutoPathFollow/PlayerHolder
 onready var player_move_delay = $PlayerPath/PlayerMoveDelay
 onready var player_damage_delay = $PlayerPath/PlayerDamageDelay
 
-var stage_max_idx = 2
+var stage_max_idx = len(stages)
 var stage_current_idx = 0
 var stage_current_instance: Stage = null
 var stage_current_enemies = []

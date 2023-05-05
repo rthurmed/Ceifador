@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/stages/Stage.gd" type="Script" id=1]
 [ext_resource path="res://src/util/AutoPathFollow.tscn" type="PackedScene" id=2]
@@ -6,17 +6,22 @@
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -12, 90, 0, 0, 0, 0, -9, 124, 0, 0, 0, 0, 17, 150, 0, 0, 0, 0, 90, 170 )
+"points": PoolVector2Array( 0, 0, 0, 0, -12, 90, 0, 0, 0, 0, -9, 124, 0, 0, 0, 0, 17, 150, 0, 0, 0, 0, 86, 171 )
 }
 
 [sub_resource type="Curve2D" id=5]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 254, -124, 0, 0, 0, 0, 189, -111, 0, 0, 0, 0, 163, -81, 0, 0, 0, 0, 145, 8 )
+"points": PoolVector2Array( 0, 0, 0, 0, 254, -124, 0, 0, 0, 0, 189, -111, 0, 0, 0, 0, 150, -85, 0, 0, 0, 0, 124, 2 )
 }
 
 [sub_resource type="Curve2D" id=6]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 306, -36, 0, 0, 0, 0, 301, 6, 0, 0, 0, 0, 278, 43, 0, 0, 0, 0, 211, 68 )
+"points": PoolVector2Array( 0, 0, 0, 0, 306, -36, 0, 0, 0, 0, 301, 6, 0, 0, 0, 0, 278, 43, 0, 0, 0, 0, 215, 69 )
+}
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 306, -36, 0, 0, 0, 0, 260, -21, 0, 0, 0, 0, 223, 5, 0, 0, 0, 0, 187, 62 )
 }
 
 [node name="Stage1" type="Node2D"]
@@ -51,3 +56,13 @@ position = Vector2( 306, -36 )
 loop = false
 
 [node name="Enemy" parent="Enemy1Path4/AutoPathFollow" instance=ExtResource( 3 )]
+
+[node name="Enemy1Path5" type="Path2D" parent="."]
+position = Vector2( -40, 11 )
+curve = SubResource( 7 )
+
+[node name="AutoPathFollow" parent="Enemy1Path5" instance=ExtResource( 2 )]
+position = Vector2( 306, -36 )
+loop = false
+
+[node name="Enemy" parent="Enemy1Path5/AutoPathFollow" instance=ExtResource( 3 )]

@@ -34,13 +34,13 @@ position = Vector2( -37, 97 )
 [node name="Enemy" parent="Enemy1Path2/AutoPathFollow" instance=ExtResource( 3 )]
 
 [node name="AutoPathFollow2" parent="Enemy1Path2" instance=ExtResource( 2 )]
-position = Vector2( 10.9348, 97 )
+position = Vector2( 11.0756, 97 )
 offset = 48.0
 
 [node name="Enemy" parent="Enemy1Path2/AutoPathFollow2" instance=ExtResource( 3 )]
 
 [node name="AutoPathFollow3" parent="Enemy1Path2" instance=ExtResource( 2 )]
-position = Vector2( 59.0348, 97 )
+position = Vector2( 59.1567, 97 )
 offset = 96.0
 
 [node name="Enemy" parent="Enemy1Path2/AutoPathFollow3" instance=ExtResource( 3 )]
