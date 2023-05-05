@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://src/common/Bullet.gd"
 }, {
 "base": "Area2D",
+"class": "Drop",
+"language": "GDScript",
+"path": "res://src/enemy/Drop.gd"
+}, {
+"base": "Area2D",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://src/enemy/Enemy.gd"
@@ -56,6 +61,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bullet": "",
+"Drop": "",
 "Enemy": "",
 "Gun": "",
 "Health": "",
@@ -170,6 +176,7 @@ reset={
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="player_bullets"
 2d_physics/layer_5="enemy_bullets"
+2d_physics/layer_6="enemy_drops"
 
 [physics]
 

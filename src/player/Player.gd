@@ -8,6 +8,7 @@ const DAMAGE_COLLISION = -3
 const ENERGY_COST_BULLET = 1
 const ENERGY_COST_DASH = 3
 const ENERGY_HEAL_BY_STEALING = 2
+const HEAL_BY_DROPPED_HP = 2
 
 signal dead
 
@@ -65,6 +66,11 @@ func apply_shooting(_delta):
 
 func _on_Area_area_entered(area):
 	if immune_to_damage: return
+	
+	if area.is_in_group(Drop.GROUP):
+		health.heal(HEAL_BY_DROPPED_HP)
+		area.queue_free()
+		# TODO: play healing sound
 	
 	if area.is_in_group(Bullet.GROUP):
 		health.hit()

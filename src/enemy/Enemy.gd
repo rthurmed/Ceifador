@@ -4,8 +4,11 @@ class_name Enemy
 const COLLISION_LAYER = 4 # being the enemy
 const COLLISION_MASK = 8 # get hit by player bullets
 const GROUP = 'enemy'
+const DropHPScene = preload("res://src/enemy/DropHP.tscn")
 
 signal dead
+
+export var should_drop_hp = false
 
 onready var health = $Health
 onready var audio_damage = $Audio/Damage
@@ -35,6 +38,15 @@ func _ready():
 			that_gun.connect("shot", self, '_on_Gun_shot')
 
 
+func spawn_hp_drop():
+	var instance = DropHPScene.instance()
+	
+	instance.global_position = global_position
+	
+	var stage: Node2D = get_tree().get_nodes_in_group('stage')[0]
+	stage.call_deferred("add_child", instance)
+
+
 func _on_Enemy_area_entered(area):
 	if area.is_in_group(Bullet.GROUP):
 		health.hit()
@@ -49,6 +61,10 @@ func _on_Gun_shot():
 
 func _on_Health_dead():
 	animation.play("death")
+	
+	if should_drop_hp:
+		spawn_hp_drop()
+	
 	for that_gun in my_guns:
 		that_gun.shooting = false
 
