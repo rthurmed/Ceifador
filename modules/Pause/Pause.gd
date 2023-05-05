@@ -6,6 +6,10 @@ export var disabled = false
 onready var ui = $UI
 
 
+func _ready():
+	ui.visible = false
+
+
 func _unhandled_input(event):
 	if disabled: return
 	
