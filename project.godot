@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="NachoLoko"
-run/main_scene="res://src/Main.tscn"
+run/main_scene="res://src/Intro.tscn"
 config/icon="res://icon.png"
 
 [display]

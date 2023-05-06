@@ -1,10 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/background/Layer 1.png" type="Texture" id=2]
+[ext_resource path="res://BackgroundParallax.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/util/AutoPathFollow.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sprites/background/Layer 2.png" type="Texture" id=4]
-[ext_resource path="res://src/BackgroundParallax.gd" type="Script" id=5]
 [ext_resource path="res://src/UI-Retries.gd" type="Script" id=6]
 [ext_resource path="res://src/ui/RetryIcon.tscn" type="PackedScene" id=7]
 [ext_resource path="res://modules/Pause/Pause.tscn" type="PackedScene" id=8]
@@ -25,33 +23,7 @@ extents = Vector2( 152.5, 18.5 )
 [node name="Main" type="Node2D" groups=["stage"]]
 script = ExtResource( 1 )
 
-[node name="BackgroundParallax" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
-script = ExtResource( 5 )
-speed = 300.0
-
-[node name="Layer1" type="ParallaxLayer" parent="BackgroundParallax"]
-position = Vector2( 112, 144 )
-motion_scale = Vector2( 0.6, 0.6 )
-motion_mirroring = Vector2( 416, 352 )
-
-[node name="Sprite" type="Sprite" parent="BackgroundParallax/Layer1"]
-texture = ExtResource( 2 )
-
-[node name="Sprite2" type="Sprite" parent="BackgroundParallax/Layer1"]
-position = Vector2( 0, 352 )
-texture = ExtResource( 2 )
-
-[node name="Layer2" type="ParallaxLayer" parent="BackgroundParallax"]
-position = Vector2( 112, 144 )
-motion_mirroring = Vector2( 416, 352 )
-
-[node name="Sprite" type="Sprite" parent="BackgroundParallax/Layer2"]
-texture = ExtResource( 4 )
-
-[node name="Sprite2" type="Sprite" parent="BackgroundParallax/Layer2"]
-position = Vector2( 0, 352 )
-texture = ExtResource( 4 )
+[node name="BackgroundParallax" parent="." instance=ExtResource( 2 )]
 
 [node name="StageHolder" type="Node2D" parent="."]
 
