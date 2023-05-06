@@ -62,9 +62,6 @@ func _on_Gun_shot():
 func _on_Health_dead():
 	animation.play("death")
 	
-	if should_drop_hp:
-		spawn_hp_drop()
-	
 	for that_gun in my_guns:
 		that_gun.shooting = false
 
@@ -76,4 +73,6 @@ func _on_Health_damage():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "death":
 		emit_signal("dead")
+		if should_drop_hp:
+			spawn_hp_drop()
 		queue_free()

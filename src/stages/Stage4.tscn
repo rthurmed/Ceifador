@@ -37,3 +37,4 @@ position = Vector2( 254, -124 )
 loop = false
 
 [node name="Enemy" parent="Enemy1Path3/AutoPathFollow" instance=ExtResource( 3 )]
+should_drop_hp = true
