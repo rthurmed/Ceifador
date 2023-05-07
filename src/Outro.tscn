@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/BackgroundParallax.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/princess-outline.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/player-outline.png" type="Texture" id=3]
+[ext_resource path="res://src/Outro.gd" type="Script" id=4]
+[ext_resource path="res://assets/font/small_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/font/Last Spaceship.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 2
+outline_color = Color( 0.215686, 0.145098, 0.219608, 1 )
+use_mipmaps = true
+extra_spacing_top = 4
+extra_spacing_bottom = -4
+extra_spacing_space = 4
+font_data = ExtResource( 6 )
+
+[node name="Outro" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="BackgroundParallax" parent="." instance=ExtResource( 1 )]
+speed = -100.0
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 103, 135 )
+
+[node name="Princess" type="Sprite" parent="Node2D"]
+texture = ExtResource( 2 )
+
+[node name="Player" type="Sprite" parent="Node2D"]
+position = Vector2( 12, 2 )
+texture = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 17.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 5 )
+text = "CONGRATS! YOU SAVED THE DAY"
+align = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -64.0
+margin_bottom = -35.0
+custom_fonts/font = SubResource( 1 )
+text = "the end"
+align = 1
+uppercase = true

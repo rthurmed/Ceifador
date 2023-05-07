@@ -108,7 +108,6 @@ margin_left = 42.0
 margin_right = 52.0
 
 [node name="Pause" parent="." instance=ExtResource( 8 )]
-visible = false
 
 [node name="Audio" type="Node" parent="."]
 

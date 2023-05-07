@@ -89,7 +89,7 @@ func load_stage(stage_idx):
 
 func _on_Current_Stage__tree_exited():
 	if stage_current_idx >= stage_max_idx:
-		# TODO: call end screen
+		var _ok = get_tree().change_scene("res://src/Outro.tscn")
 		return
 	
 	audio_pass_stage.play()
