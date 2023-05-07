@@ -1,0 +1,170 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://src/stages/boss/BossBattle.gd" type="Script" id=1]
+[ext_resource path="res://assets/font/small_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/enemy/boss/WraithLVL3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/util/AutoPathFollow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/enemy/Heavy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/enemy/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sprites/princess-outline.png" type="Texture" id=7]
+
+[sub_resource type="Curve2D" id=8]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 114, -167, 0, 0, 0, 0, 114, 66 )
+}
+
+[sub_resource type="Curve2D" id=9]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 84, -157, 0, 0, 0, 0, 84, 44, 0, 0, 0, 0, 22, 76 )
+}
+
+[sub_resource type="Curve2D" id=10]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 145, -157, 0, 0, 0, 0, 145, 44, 0, 0, 0, 0, 202, 79 )
+}
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 108, -102, 0, 0, 0, 0, 108, 106 )
+}
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 192, -24.0004, 0, 0, 0, 0, 192, 103, 0, 0, 0, 0, 14, -24.0004, 0, 0, 0, 0, 14, 103, 0, 0, 0, 0, 192, -24.0004 )
+}
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.478431, 0.129412, 0.227451, 1 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.882353, 0.254902, 0.254902, 1 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 0.501961, 0.666667, 1 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[node name="BossBattleLVL3" type="Node2D"]
+script = ExtResource( 1 )
+boss_path = NodePath("BossEnterPath2D/AutoPathFollow/BossPath2D/AutoPathFollow/WraithLVL3")
+
+[node name="EnemyPath2D" type="Path2D" parent="."]
+curve = SubResource( 8 )
+
+[node name="AutoPathFollow" parent="EnemyPath2D" instance=ExtResource( 4 )]
+position = Vector2( 114, -167 )
+loop = false
+
+[node name="Sprite" type="Sprite" parent="EnemyPath2D/AutoPathFollow"]
+position = Vector2( 0, -18 )
+texture = ExtResource( 7 )
+
+[node name="Heavy" parent="EnemyPath2D/AutoPathFollow" instance=ExtResource( 5 )]
+should_drop_hp = true
+
+[node name="EnemyPath2D2" type="Path2D" parent="."]
+curve = SubResource( 9 )
+
+[node name="AutoPathFollow2" parent="EnemyPath2D2" instance=ExtResource( 4 )]
+position = Vector2( 84, -157 )
+loop = false
+
+[node name="Enemy1" parent="EnemyPath2D2/AutoPathFollow2" instance=ExtResource( 6 )]
+
+[node name="EnemyPath2D3" type="Path2D" parent="."]
+curve = SubResource( 10 )
+
+[node name="AutoPathFollow2" parent="EnemyPath2D3" instance=ExtResource( 4 )]
+position = Vector2( 145, -157 )
+loop = false
+
+[node name="Enemy1" parent="EnemyPath2D3/AutoPathFollow2" instance=ExtResource( 6 )]
+
+[node name="BossEnterPath2D" type="Path2D" parent="."]
+position = Vector2( 6, 44 )
+curve = SubResource( 7 )
+
+[node name="AutoPathFollow" parent="BossEnterPath2D" instance=ExtResource( 4 )]
+position = Vector2( 108, -102 )
+loop = false
+
+[node name="BossPath2D" type="Path2D" parent="BossEnterPath2D/AutoPathFollow"]
+position = Vector2( -104, -38.9996 )
+curve = SubResource( 6 )
+
+[node name="AutoPathFollow" parent="BossEnterPath2D/AutoPathFollow/BossPath2D" instance=ExtResource( 4 )]
+position = Vector2( 149.3, 72.5337 )
+offset = 176.59
+
+[node name="WraithLVL3" parent="BossEnterPath2D/AutoPathFollow/BossPath2D/AutoPathFollow" instance=ExtResource( 3 )]
+external_life_bar_path = NodePath("../../../../../CanvasLayer/Life/Bar/Bar3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Life" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_bottom = 26.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Life"]
+anchor_right = 1.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 2 )
+text = "the blood lich akkanon"
+align = 1
+valign = 2
+uppercase = true
+
+[node name="Bar" type="Control" parent="CanvasLayer/Life"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -103.0
+margin_top = -7.0
+margin_right = 103.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Life/Bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.215686, 0.145098, 0.219608, 1 )
+
+[node name="Bar3" type="ProgressBar" parent="CanvasLayer/Life/Bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+value = 100.0
+percent_visible = false
+
+[node name="Bar2" type="ProgressBar" parent="CanvasLayer/Life/Bar"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 3 )
+value = 100.0
+percent_visible = false
+
+[node name="Bar1" type="ProgressBar" parent="CanvasLayer/Life/Bar"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 3 )
+value = 100.0
+percent_visible = false
