@@ -128,3 +128,7 @@ func _on_PlayerMoveDelay_timeout():
 func _on_PlayerDamageDelay_timeout():
 	player_instance.modulate = Color(1, 1, 1, 1)
 	player_instance.immune_to_damage = false
+
+
+func _on_Main_tree_exited():
+	Soundtrack.seek(0.0)
