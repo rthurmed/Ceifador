@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://src/BackgroundParallax.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://modules/Pause/Pause.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sfx/game-pass-stage-pickupCoin.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sfx/player-death-explosion.wav" type="AudioStream" id=10]
-[ext_resource path="res://assets/music/nene/[OGG] Boss-Battle-6-Metal-V1.ogg" type="AudioStream" id=11]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -157,10 +156,6 @@ text = "PRESS \"R\" TO TRY AGAIN"
 align = 1
 uppercase = true
 
-[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
-volume_db = -18.0
-autoplay = true
-
+[connection signal="tree_exited" from="." to="." method="_on_Main_tree_exited"]
 [connection signal="timeout" from="PlayerPath/PlayerMoveDelay" to="." method="_on_PlayerMoveDelay_timeout"]
 [connection signal="timeout" from="PlayerPath/PlayerDamageDelay" to="." method="_on_PlayerDamageDelay_timeout"]

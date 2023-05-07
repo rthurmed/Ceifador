@@ -5,7 +5,6 @@ onready var animation = $AnimationPlayer
 
 
 func _ready():
-	# TODO: music
 	animation.play("intro")
 
 

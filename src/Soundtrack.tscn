@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/music/nene/[OGG] Boss-Battle-6-Metal-V1.ogg" type="AudioStream" id=1]
+
+[node name="Soundtrack" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -18.0
+autoplay = true
