@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Boss Battle 6 Metal V1.wav-69db58deb2c9c7b2f6b1b34742678396.sample"
+
+[deps]
+
+source_file="res://assets/music/nene/Boss Battle 6 Metal V1.wav"
+dest_files=[ "res://.import/Boss Battle 6 Metal V1.wav-69db58deb2c9c7b2f6b1b34742678396.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

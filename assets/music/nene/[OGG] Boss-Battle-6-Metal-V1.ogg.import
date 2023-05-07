@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/[OGG] Boss-Battle-6-Metal-V1.ogg-5884cbac12ff826d73d7f534fdab244e.oggstr"
+
+[deps]
+
+source_file="res://assets/music/nene/[OGG] Boss-Battle-6-Metal-V1.ogg"
+dest_files=[ "res://.import/[OGG] Boss-Battle-6-Metal-V1.ogg-5884cbac12ff826d73d7f534fdab244e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
