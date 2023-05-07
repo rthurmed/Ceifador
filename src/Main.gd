@@ -13,6 +13,7 @@ const stages = [
 	#preload("res://src/stages/Stage8.tscn"),
 	#preload("res://src/stages/Stage7.tscn"),
 	preload("res://src/stages/boss/BossBattleLVL1.tscn"),
+	preload("res://src/stages/boss/BossBattleLVL2.tscn"),
 ]
 
 onready var stage_holder = $StageHolder

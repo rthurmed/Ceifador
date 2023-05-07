@@ -1,19 +1,24 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/stages/boss/BossBattle.gd" type="Script" id=1]
-[ext_resource path="res://src/enemy/Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/font/small_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/font/small_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/enemy/boss/WraithLVL2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/util/AutoPathFollow.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/enemy/boss/WraithLVL1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/enemy/Possessed.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=7]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 113, -21, 0, 0, 0, 0, 111, 50, 0, 0, 0, 0, 110, 88, 0, 0, 0, 0, 100, 105, 0, 0, 0, 0, 58, 110, 0, 0, 0, 0, 36, 112, 0, 0, 0, 0, 24, 115, 0, 0, 0, 0, 16, 121, 0, 0, 0, 0, 14, 128, 0, 0, 0, 0, 15, 135, 0, 0, 0, 0, 19, 143, 0, 0, 0, 0, 36, 152, 0, 0, 0, 0, 203, 153, 0, 0, 0, 0, 208, 156, 0, 0, 0, 0, 214, 170, 0, 0, 0, 0, 214, 179, 0, 0, 0, 0, 202, 191, 0, 0, 0, 0, 31, 194, 0, 0, 0, 0, 21, 205, 0, 0, 0, 0, 20, 217, 0, 0, 0, 0, 30, 231, 0, 0, 0, 0, 112, 232, 0, 0, 0, 0, 123, 246, 0, 0, 0, 0, 122, 316 )
+"points": PoolVector2Array( 0, 0, 0, 0, 108, -41, 0, 0, 0, 0, 108, 48 )
 }
 
 [sub_resource type="Curve2D" id=6]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 76, -121, 0, 0, 0, 0, 76, -5 )
+"points": PoolVector2Array( 0, 0, 0, 0, 108, 45, 0, 0, 0, 0, 170, 45, 0, 0, 0, 0, 170, 266, 0, 0, 0, 0, 48, 266, 0, 0, 0, 0, 48, 45, 0, 0, 0, 0, 108, 45 )
+}
+
+[sub_resource type="Curve2D" id=8]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -135, 44, 0, 0, 0, 0, 267, 45 )
 }
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -30,38 +35,40 @@ border_color = Color( 0.8, 0.8, 0.8, 0 )
 bg_color = Color( 1, 0.501961, 0.666667, 1 )
 border_color = Color( 0.8, 0.8, 0.8, 0 )
 
-[node name="BossBattleLVL1" type="Node2D"]
+[node name="BossBattleLVL2" type="Node2D"]
 script = ExtResource( 1 )
-boss_path = NodePath("BossPath2D/AutoPathFollow/WraithLVL1")
+boss_path = NodePath("BossEnterPath2D/AutoPathFollow/BossPath2D/AutoPathFollow/WraithLVL2")
 
-[node name="BossPath2D" type="Path2D" parent="."]
-curve = SubResource( 1 )
+[node name="BossEnterPath2D" type="Path2D" parent="."]
+curve = SubResource( 7 )
 
-[node name="AutoPathFollow" parent="BossPath2D" instance=ExtResource( 4 )]
-position = Vector2( 113, -21 )
-
-[node name="WraithLVL1" parent="BossPath2D/AutoPathFollow" instance=ExtResource( 5 )]
-external_life_bar_path = NodePath("../../../CanvasLayer/Life/Bar/Bar1")
-
-[node name="Enemy1Path3" type="Path2D" parent="."]
-position = Vector2( -40, 63 )
-curve = SubResource( 6 )
-
-[node name="AutoPathFollow" parent="Enemy1Path3" instance=ExtResource( 4 )]
-position = Vector2( 76, -121 )
+[node name="AutoPathFollow" parent="BossEnterPath2D" instance=ExtResource( 4 )]
+position = Vector2( 108, -41 )
 loop = false
 
-[node name="Enemy" parent="Enemy1Path3/AutoPathFollow" instance=ExtResource( 2 )]
-
-[node name="Enemy1Path4" type="Path2D" parent="."]
-position = Vector2( 115, 63 )
+[node name="BossPath2D" type="Path2D" parent="BossEnterPath2D/AutoPathFollow"]
+position = Vector2( -108, -45 )
 curve = SubResource( 6 )
 
-[node name="AutoPathFollow" parent="Enemy1Path4" instance=ExtResource( 4 )]
-position = Vector2( 76, -121 )
-loop = false
+[node name="AutoPathFollow" parent="BossEnterPath2D/AutoPathFollow/BossPath2D" instance=ExtResource( 4 )]
+position = Vector2( 108, 45 )
 
-[node name="Enemy" parent="Enemy1Path4/AutoPathFollow" instance=ExtResource( 2 )]
+[node name="WraithLVL2" parent="BossEnterPath2D/AutoPathFollow/BossPath2D/AutoPathFollow" instance=ExtResource( 3 )]
+external_life_bar_path = NodePath("../../../../../CanvasLayer/Life/Bar/Bar2")
+
+[node name="EnemyPath2D" type="Path2D" parent="."]
+curve = SubResource( 8 )
+
+[node name="AutoPathFollow" parent="EnemyPath2D" instance=ExtResource( 4 )]
+position = Vector2( -135, 44 )
+
+[node name="Possessed" parent="EnemyPath2D/AutoPathFollow" instance=ExtResource( 5 )]
+
+[node name="AutoPathFollow2" parent="EnemyPath2D" instance=ExtResource( 4 )]
+position = Vector2( -95.0405, 44.0994 )
+offset = 40.0
+
+[node name="Possessed" parent="EnemyPath2D/AutoPathFollow2" instance=ExtResource( 5 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -72,7 +79,7 @@ margin_bottom = 26.0
 [node name="Label" type="Label" parent="CanvasLayer/Life"]
 anchor_right = 1.0
 margin_bottom = 15.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 text = "the blood lich akkanon"
 align = 1
 valign = 2
@@ -117,6 +124,7 @@ value = 100.0
 percent_visible = false
 
 [node name="Bar1" type="ProgressBar" parent="CanvasLayer/Life/Bar"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0

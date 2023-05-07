@@ -2,7 +2,6 @@ extends Stage
 class_name BossBattle
 
 
-export var sub_stage: int = 0
 export var boss_path: NodePath
 
 onready var boss: Enemy = get_node(boss_path)
