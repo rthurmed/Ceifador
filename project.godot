@@ -80,7 +80,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="NachoLoko"
+config/name="Ceifador"
 run/main_scene="res://src/Intro.tscn"
 config/icon="res://icon.png"
 
