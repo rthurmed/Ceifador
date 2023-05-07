@@ -180,25 +180,25 @@ shape = SubResource( 9 )
 rotation = 1.5708
 bullet_scene = ExtResource( 10 )
 shooting = true
-time_between_shots = 0.6
+time_between_shots = 0.75
 
 [node name="Gun2" parent="Rotating" instance=ExtResource( 9 )]
 position = Vector2( -9.53674e-07, 0 )
 rotation = -3.14159
 bullet_scene = ExtResource( 10 )
 shooting = true
-time_between_shots = 0.6
+time_between_shots = 0.75
 
 [node name="Gun3" parent="Rotating" instance=ExtResource( 9 )]
 rotation = -1.5708
 bullet_scene = ExtResource( 10 )
 shooting = true
-time_between_shots = 0.6
+time_between_shots = 0.75
 
 [node name="Gun4" parent="Rotating" instance=ExtResource( 9 )]
 bullet_scene = ExtResource( 10 )
 shooting = true
-time_between_shots = 0.6
+time_between_shots = 0.75
 
 [node name="Health" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, -17 )
