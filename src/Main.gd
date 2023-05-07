@@ -31,7 +31,7 @@ var stage_current_idx = 0
 var stage_current_instance: Stage = null
 var stage_current_enemies = []
 var stage_current_enemy_count = 0
-var retries = 4
+var retries = 5
 var player_instance: Player
 
 
