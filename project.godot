@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Stage",
+"class": "BossBattle",
+"language": "GDScript",
+"path": "res://src/stages/boss/BossBattle.gd"
+}, {
 "base": "Area2D",
 "class": "Bullet",
 "language": "GDScript",
@@ -60,6 +65,7 @@ _global_script_classes=[ {
 "path": "res://src/util/Util.gd"
 } ]
 _global_script_class_icons={
+"BossBattle": "",
 "Bullet": "",
 "Drop": "",
 "Enemy": "",

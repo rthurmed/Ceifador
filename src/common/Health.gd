@@ -9,15 +9,20 @@ signal updated
 export var max_hp = 10
 export var color = Color('e14141')
 export var immortal = false
+export var external_bar_path: NodePath
 
-onready var bar = $Bar
+onready var local_bar = $Bar
 
 var hp = 1
 var alive = true
+var bar: ProgressBar
 
 
 func _ready():
 	hp = max_hp
+	
+	bar = get_node(external_bar_path) if external_bar_path != "" else local_bar
+	
 	bar.value = max_hp
 	bar.max_value = max_hp
 	bar.modulate = color

@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/stages/boss/BossBattle.gd" type="Script" id=1]
+[ext_resource path="res://src/enemy/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/font/small_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/util/AutoPathFollow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/enemy/boss/WraithLVL1.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 113, -21, 0, 0, 0, 0, 111, 50, 0, 0, 0, 0, 110, 88, 0, 0, 0, 0, 100, 105, 0, 0, 0, 0, 58, 110, 0, 0, 0, 0, 36, 112, 0, 0, 0, 0, 24, 115, 0, 0, 0, 0, 16, 121, 0, 0, 0, 0, 14, 128, 0, 0, 0, 0, 15, 135, 0, 0, 0, 0, 19, 143, 0, 0, 0, 0, 36, 152, 0, 0, 0, 0, 203, 153, 0, 0, 0, 0, 208, 156, 0, 0, 0, 0, 214, 170, 0, 0, 0, 0, 214, 179, 0, 0, 0, 0, 202, 191, 0, 0, 0, 0, 31, 194, 0, 0, 0, 0, 21, 205, 0, 0, 0, 0, 20, 217, 0, 0, 0, 0, 30, 231, 0, 0, 0, 0, 174, 228, 0, 0, 0, 0, 185, 235, 0, 0, 0, 0, 186, 253, 0, 0, 0, 0, 175, 261, 0, 0, 0, 0, 144, 260, 0, 0, 0, 0, 123, 269, 0, 0, 0, 0, 119, 289, 0, 0, 0, 0, 120, 293 )
+}
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 76, -121, 0, 0, 0, 0, 76, -5 )
+}
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.478431, 0.129412, 0.227451, 1 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.882353, 0.254902, 0.254902, 1 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 0.501961, 0.666667, 1 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[node name="BossBattleLVL1" type="Node2D"]
+script = ExtResource( 1 )
+boss_path = NodePath("BossPath2D/AutoPathFollow/WraithLVL1")
+
+[node name="BossPath2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="AutoPathFollow" parent="BossPath2D" instance=ExtResource( 4 )]
+position = Vector2( 113, -21 )
+
+[node name="WraithLVL1" parent="BossPath2D/AutoPathFollow" instance=ExtResource( 5 )]
+external_life_bar_path = NodePath("../../../CanvasLayer/Life/Bar/Bar1")
+
+[node name="Enemy1Path3" type="Path2D" parent="."]
+position = Vector2( -40, 63 )
+curve = SubResource( 6 )
+
+[node name="AutoPathFollow" parent="Enemy1Path3" instance=ExtResource( 4 )]
+position = Vector2( 76, -121 )
+loop = false
+
+[node name="Enemy" parent="Enemy1Path3/AutoPathFollow" instance=ExtResource( 2 )]
+
+[node name="Enemy1Path4" type="Path2D" parent="."]
+position = Vector2( 115, 63 )
+curve = SubResource( 6 )
+
+[node name="AutoPathFollow" parent="Enemy1Path4" instance=ExtResource( 4 )]
+position = Vector2( 76, -121 )
+loop = false
+
+[node name="Enemy" parent="Enemy1Path4/AutoPathFollow" instance=ExtResource( 2 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Life" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_bottom = 26.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Life"]
+anchor_right = 1.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 3 )
+text = "the blood lich akkanon"
+align = 1
+valign = 2
+uppercase = true
+
+[node name="Bar" type="Control" parent="CanvasLayer/Life"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -103.0
+margin_top = -7.0
+margin_right = 103.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Life/Bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.215686, 0.145098, 0.219608, 1 )
+
+[node name="Bar3" type="ProgressBar" parent="CanvasLayer/Life/Bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -4.0
+margin_bottom = -2.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+value = 100.0
+percent_visible = false
+
+[node name="Bar2" type="ProgressBar" parent="CanvasLayer/Life/Bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -4.0
+margin_bottom = -2.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 3 )
+value = 100.0
+percent_visible = false
+
+[node name="Bar1" type="ProgressBar" parent="CanvasLayer/Life/Bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -4.0
+margin_bottom = -2.0
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 3 )
+value = 100.0
+percent_visible = false

@@ -9,8 +9,9 @@ const DropHPScene = preload("res://src/enemy/DropHP.tscn")
 signal dead
 
 export var should_drop_hp = false
+export var external_life_bar_path: NodePath
 
-onready var health = $Health
+onready var health: Health = $Health
 onready var audio_damage = $Audio/Damage
 onready var audio_laser = $Audio/Laser
 onready var animation = $AnimationPlayer
@@ -23,6 +24,9 @@ func _ready():
 	collision_mask = COLLISION_MASK
 	
 	add_to_group(GROUP)
+	
+	if external_life_bar_path != "":
+		health.bar = get_node(external_life_bar_path)
 	
 	var _ok
 	_ok = connect("area_entered", self, '_on_Enemy_area_entered')

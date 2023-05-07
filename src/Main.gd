@@ -5,13 +5,14 @@ const PlayerScene = preload("res://src/player/Player.tscn")
 
 const stages = [
 	preload("res://src/stages/Stage1.tscn"),
-	preload("res://src/stages/Stage4.tscn"),
-	preload("res://src/stages/Stage5.tscn"),
-	preload("res://src/stages/Stage6.tscn"),
-	preload("res://src/stages/Stage9.tscn"),
-	preload("res://src/stages/Stage8.tscn"),
-	preload("res://src/stages/Stage7.tscn"),
-	# TODO: Final Boss
+	# TODO: remove comments
+	#preload("res://src/stages/Stage4.tscn"),
+	#preload("res://src/stages/Stage5.tscn"),
+	#preload("res://src/stages/Stage6.tscn"),
+	#preload("res://src/stages/Stage9.tscn"),
+	#preload("res://src/stages/Stage8.tscn"),
+	#preload("res://src/stages/Stage7.tscn"),
+	preload("res://src/stages/boss/BossBattleLVL1.tscn"),
 ]
 
 onready var stage_holder = $StageHolder

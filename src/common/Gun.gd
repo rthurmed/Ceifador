@@ -39,10 +39,11 @@ func _process(delta):
 
 
 func shoot():
-	var instance: Bullet = bullet_scene.instance()
+	var instance = bullet_scene.instance()
 	
 	instance.global_position = bullet_spawn_point.global_position
-	instance.angle = bullet_spawn_point.global_rotation
+	if 'angle' in instance:
+		instance.angle = bullet_spawn_point.global_rotation
 	
 	var stage: Node2D = get_tree().get_nodes_in_group('stage')[0]
 	stage.add_child(instance)
