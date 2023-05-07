@@ -89,6 +89,7 @@ func load_stage(stage_idx):
 
 func _on_Current_Stage__tree_exited():
 	if stage_current_idx >= stage_max_idx:
+		if not is_inside_tree(): return
 		var _ok = get_tree().change_scene("res://src/Outro.tscn")
 		return
 	
