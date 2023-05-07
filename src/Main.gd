@@ -5,15 +5,15 @@ const PlayerScene = preload("res://src/player/Player.tscn")
 
 const stages = [
 	preload("res://src/stages/Stage1.tscn"),
-	# TODO: remove comments
-	#preload("res://src/stages/Stage4.tscn"),
-	#preload("res://src/stages/Stage5.tscn"),
-	#preload("res://src/stages/Stage6.tscn"),
-	#preload("res://src/stages/Stage9.tscn"),
-	#preload("res://src/stages/Stage8.tscn"),
-	#preload("res://src/stages/Stage7.tscn"),
+	preload("res://src/stages/Stage4.tscn"),
+	preload("res://src/stages/Stage5.tscn"),
+	preload("res://src/stages/Stage6.tscn"),
+	preload("res://src/stages/Stage9.tscn"),
+	preload("res://src/stages/Stage8.tscn"),
+	preload("res://src/stages/Stage7.tscn"),
 	preload("res://src/stages/boss/BossBattleLVL1.tscn"),
 	preload("res://src/stages/boss/BossBattleLVL2.tscn"),
+	preload("res://src/stages/boss/BossBattleLVL3.tscn"),
 ]
 
 onready var stage_holder = $StageHolder
@@ -24,6 +24,7 @@ onready var player_move_delay = $PlayerPath/PlayerMoveDelay
 onready var player_damage_delay = $PlayerPath/PlayerDamageDelay
 onready var audio_pass_stage = $Audio/PassStage
 onready var audio_player_death = $Audio/PlayerDeath
+onready var game_over_screen = $GameOver
 
 var stage_max_idx = len(stages) - 1
 var stage_current_idx = 0
@@ -44,6 +45,9 @@ func _process(_delta):
 	if Input.is_action_just_released("cheat_skip"):
 		for enemy in stage_current_enemies:
 			enemy.health.hit(-9999)
+	
+	if game_over_screen.visible and Input.is_action_just_released("reset"):
+		var _ok = get_tree().reload_current_scene()
 
 
 func reset_player():
@@ -100,7 +104,7 @@ func _on_Enemy_dead():
 
 func _on_Player_dead():
 	if retries <= 0:
-		# TODO: show game over
+		game_over_screen.visible = true
 		return
 	
 	retries = retries - 1
