@@ -7,11 +7,19 @@ const GROUP = 'bullet'
 export var speed = 100
 export var angle = 0
 export var max_lifetime = 2.4 # seconds
+export var only_visual = false
 
 var lifetime = 0
 
 
 func _ready():
+	monitoring = not only_visual
+	monitorable = not only_visual
+	
+	if only_visual:
+		set_process(false)
+		return
+	
 	add_to_group(GROUP)
 
 
