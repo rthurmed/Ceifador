@@ -30,25 +30,12 @@ func _ready():
 	bullet_mock_instance.only_visual = true
 	mock_bullet.add_child(bullet_mock_instance)
 	
-	delay.set_wait_time(time_between_shots - ANIMATION_DURATION)
+	var time_before_animation = time_between_shots - ANIMATION_DURATION
+	time_before_animation = clamp(time_before_animation, 0.0001, 9999)
+	delay.set_wait_time(time_before_animation)
+	
 	if shooting:
-		delay.start()
-
-
-func _process(delta):
-	if not shooting: return
-	
-	if not was_shooting_before and not delay_first:
-		# FIXME
-		time = time_between_shots
-	
-	if time >= time_between_shots:
-		time = 0
-		was_shooting_before = false
-		# shoot()
-	
-	was_shooting_before = true
-	time += delta
+		prepare_shooting()
 
 
 func shoot():
@@ -64,6 +51,10 @@ func shoot():
 	emit_signal("shot")
 
 
+func prepare_shooting():
+	delay.start()
+
+
 func _on_Delay_timeout():
 	animation.play("prepare")
 
@@ -76,4 +67,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	
 	if shooting:
 		# starts next shot
-		delay.start()
+		prepare_shooting()
