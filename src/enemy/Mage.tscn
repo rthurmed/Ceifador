@@ -10,27 +10,27 @@
 [ext_resource path="res://src/util/RandomPitchAudio.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/common/Gun.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/enemy/EnemyBullet.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/sprites/enemy-tier2-Sheet-outline.png" type="Texture" id=11]
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 40, 40 )
+[ext_resource path="res://assets/sprites/enemy-mage-Sheet-outline.png" type="Texture" id=11]
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 11 )
-region = Rect2( 40, 0, 40, 40 )
+region = Rect2( 40, 80, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 11 )
-region = Rect2( 80, 0, 40, 40 )
+region = Rect2( 80, 80, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 11 )
-region = Rect2( 120, 0, 40, 40 )
+region = Rect2( 120, 80, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 80, 40, 40 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 10 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -166,7 +166,6 @@ texture = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -180,25 +179,25 @@ shape = SubResource( 9 )
 rotation = 1.5708
 bullet_scene = ExtResource( 10 )
 shooting = true
-time_between_shots = 0.75
+time_between_shots = 0.8
 
 [node name="Gun2" parent="Rotating" instance=ExtResource( 9 )]
 position = Vector2( -9.53674e-07, 0 )
 rotation = -3.14159
 bullet_scene = ExtResource( 10 )
 shooting = true
-time_between_shots = 0.75
+time_between_shots = 0.8
 
 [node name="Gun3" parent="Rotating" instance=ExtResource( 9 )]
 rotation = -1.5708
 bullet_scene = ExtResource( 10 )
 shooting = true
-time_between_shots = 0.75
+time_between_shots = 0.8
 
 [node name="Gun4" parent="Rotating" instance=ExtResource( 9 )]
 bullet_scene = ExtResource( 10 )
 shooting = true
-time_between_shots = 0.75
+time_between_shots = 0.8
 
 [node name="Health" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, -17 )
