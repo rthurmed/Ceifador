@@ -1,15 +1,43 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/sfx/explosion-enemy.wav" type="AudioStream" id=1]
 [ext_resource path="res://assets/sfx/explosion-death-enemy.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/ruler.png" type="Texture" id=3]
 [ext_resource path="res://assets/sfx/laserShoot-enemy.wav" type="AudioStream" id=4]
 [ext_resource path="res://src/enemy/Enemy.gd" type="Script" id=5]
-[ext_resource path="res://assets/sprites/enemy-three-arms-outline.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/enemy-possessed-Sheet-outline.png" type="Texture" id=7]
 [ext_resource path="res://src/common/Health.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/util/RandomPitchAudio.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/common/Gun.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/enemy/EnemyBullet.tscn" type="PackedScene" id=11]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 7 )
+region = Rect2( 40, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 7 )
+region = Rect2( 80, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 7 )
+region = Rect2( 120, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 7 )
+region = Rect2( 160, 0, 40, 40 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 13.0
@@ -138,8 +166,8 @@ visible = false
 position = Vector2( 52, 52 )
 texture = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 6 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )

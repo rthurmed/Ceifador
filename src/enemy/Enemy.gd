@@ -40,6 +40,9 @@ func _ready():
 		if is_a_parent_of(that_gun):
 			my_guns.append(that_gun)
 			that_gun.connect("shot", self, '_on_Gun_shot')
+	
+	if get_node("AnimatedSprite") != null:
+		get_node("AnimatedSprite").playing = true
 
 
 func spawn_hp_drop():
