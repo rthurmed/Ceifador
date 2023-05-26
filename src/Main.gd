@@ -25,6 +25,7 @@ onready var player_damage_delay = $PlayerPath/PlayerDamageDelay
 onready var audio_pass_stage = $Audio/PassStage
 onready var audio_player_death = $Audio/PlayerDeath
 onready var game_over_screen = $GameOver
+onready var camera_shake = $Camera/Shake
 
 var stage_max_idx = len(stages) - 1
 var stage_current_idx = 0
@@ -61,6 +62,7 @@ func reset_player():
 	var _ok
 	_ok = player_instance.connect("dead", self, "_on_Player_dead")
 	_ok = player_instance.connect("tree_entered", self, "_on_Player_tree_entered")
+	_ok = player_instance.connect("ready", self, "_on_Player_ready")
 	
 	player_holder.call_deferred("add_child", player_instance)
 
@@ -132,3 +134,19 @@ func _on_PlayerDamageDelay_timeout():
 
 func _on_Main_tree_exited():
 	Soundtrack.seek(0.0)
+
+
+func _on_Player_ready():
+	var _ok = player_instance.health.connect("damage", self, "_on_Player_Health_damage")
+
+
+func _on_Player_Health_damage():
+	camera_shake.impact()
+
+
+func helper_freeze():
+	get_tree().paused = true
+
+
+func helper_unfreeze():
+	get_tree().paused = false
