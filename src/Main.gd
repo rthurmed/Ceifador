@@ -2,6 +2,7 @@ extends Node2D
 
 
 const PlayerScene = preload("res://src/player/Player.tscn")
+const UI_TIME_PAD = 4
 
 const stages = [
 	preload("res://src/stages/Stage1.tscn"),
@@ -28,14 +29,19 @@ onready var game_over_screen = $GameOver
 onready var camera_shake = $Camera/Shake
 onready var ui_life = $UI/StatusBars/Life
 onready var ui_energy = $UI/StatusBars/Energy
+onready var indicator_time_label = $UI/Indicators/TimeLabel
+onready var indicator_stage_label = $UI/Indicators/StageLabel
+onready var indicator_enemies_label = $UI/Indicators/EnemiesLabel
 
 var stage_max_idx = len(stages) - 1
 var stage_current_idx = 0
 var stage_current_instance: Stage = null
 var stage_current_enemies = []
 var stage_current_enemy_count = 0
+var stage_max_enemy_count = 0
 var retries = 5
 var player_instance: Player
+var time = 0
 
 
 func _ready():
@@ -44,13 +50,17 @@ func _ready():
 	retries_ui.set_amount(retries)
 
 
-func _process(_delta):
+func _process(delta):
 	if Input.is_action_just_released("cheat_skip"):
 		for enemy in stage_current_enemies:
 			enemy.health.hit(-9999)
 	
 	if game_over_screen.visible and Input.is_action_just_released("reset"):
 		var _ok = get_tree().reload_current_scene()
+	
+	time += delta
+	
+	update_indicators()
 
 
 func reset_player():
@@ -85,10 +95,18 @@ func load_stage(stage_idx):
 	var enemies = get_tree().get_nodes_in_group(Enemy.GROUP)
 	
 	stage_current_enemy_count = len(enemies)
+	stage_max_enemy_count = stage_current_enemy_count
 	stage_current_enemies = enemies
 	
 	for enemy in enemies:
 		_ok = enemy.connect("dead", self, "_on_Enemy_dead")
+
+
+func update_indicators():
+	var seconds = floor(time)
+	indicator_time_label.text = str(seconds).pad_zeros(UI_TIME_PAD)
+	indicator_stage_label.text = str(stage_current_idx + 1, "/", stage_max_idx + 1)
+	indicator_enemies_label.text = str(stage_current_enemy_count, "/", stage_max_enemy_count)
 
 
 func _on_Current_Stage__tree_exited():

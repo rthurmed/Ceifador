@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://src/BackgroundParallax.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/sprites/ui/lifebar-progress blue.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/ui/lifebar-over.png" type="Texture" id=14]
 [ext_resource path="res://assets/sprites/ui/lifebar-progress.png" type="Texture" id=15]
+[ext_resource path="res://assets/font/small_font_no_outline.tres" type="DynamicFont" id=16]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -143,6 +144,41 @@ one_way_collision = true
 [node name="Sprite" type="Sprite" parent="UI"]
 position = Vector2( 192, 144 )
 texture = ExtResource( 12 )
+
+[node name="Indicators" type="Control" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 123.0
+margin_top = 4.0
+margin_right = 178.0
+margin_bottom = 80.0
+
+[node name="TimeLabel" type="Label" parent="UI/Indicators"]
+margin_left = 15.0
+margin_top = 12.0
+margin_right = 55.0
+margin_bottom = 26.0
+custom_colors/font_color = Color( 0.431373, 0.933333, 1, 1 )
+custom_fonts/font = ExtResource( 16 )
+text = "1234"
+
+[node name="StageLabel" type="Label" parent="UI/Indicators"]
+margin_left = 15.0
+margin_top = 36.0
+margin_right = 55.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0.431373, 0.933333, 1, 1 )
+custom_fonts/font = ExtResource( 16 )
+text = "10/13"
+
+[node name="EnemiesLabel" type="Label" parent="UI/Indicators"]
+margin_left = 15.0
+margin_top = 60.0
+margin_right = 55.0
+margin_bottom = 74.0
+custom_colors/font_color = Color( 0.431373, 0.933333, 1, 1 )
+custom_fonts/font = ExtResource( 16 )
+text = "10/13"
 
 [node name="StatusBars" type="Control" parent="UI"]
 anchor_left = 0.5
