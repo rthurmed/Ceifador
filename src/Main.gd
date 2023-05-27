@@ -169,7 +169,6 @@ func _on_Player_Health_damage():
 
 
 func _on_Player_Status_updated():
-	print(player_instance.energy.hp)
 	ui_life.max_value = player_instance.health.max_hp
 	ui_life.value = player_instance.health.hp
 	ui_energy.max_value = player_instance.energy.max_hp
