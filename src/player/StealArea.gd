@@ -38,6 +38,9 @@ func _on_StealArea_area_exited(area: Area2D):
 	timer.stop()
 	
 	target = null
+	
+	set_deferred("monitoring", false)
+	set_deferred("monitoring", true)
 
 
 func _on_Timer_timeout():
