@@ -26,6 +26,8 @@ onready var audio_pass_stage = $Audio/PassStage
 onready var audio_player_death = $Audio/PlayerDeath
 onready var game_over_screen = $GameOver
 onready var camera_shake = $Camera/Shake
+onready var ui_life = $UI/StatusBars/Life
+onready var ui_energy = $UI/StatusBars/Energy
 
 var stage_max_idx = len(stages) - 1
 var stage_current_idx = 0
@@ -137,11 +139,22 @@ func _on_Main_tree_exited():
 
 
 func _on_Player_ready():
-	var _ok = player_instance.health.connect("damage", self, "_on_Player_Health_damage")
+	var _ok
+	_ok = player_instance.health.connect("damage", self, "_on_Player_Health_damage")
+	_ok = player_instance.health.connect("updated", self, "_on_Player_Status_updated")
+	_ok = player_instance.energy.connect("updated", self, "_on_Player_Status_updated")
+	_on_Player_Status_updated()
 
 
 func _on_Player_Health_damage():
 	camera_shake.impact()
+
+
+func _on_Player_Status_updated():
+	ui_life.max_value = player_instance.health.max_hp
+	ui_life.value = player_instance.health.hp
+	ui_energy.max_value = player_instance.energy.max_hp
+	ui_energy.value = player_instance.energy.hp
 
 
 func helper_freeze():

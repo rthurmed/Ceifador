@@ -95,9 +95,11 @@ time_between_shots = 0.4
 [node name="Timer" type="Timer" parent="Gun"]
 
 [node name="Health" parent="." instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 0, 10 )
 
 [node name="Energy" parent="." instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 0, 12 )
 color = Color( 0.431373, 0.933333, 1, 1 )
 immortal = true

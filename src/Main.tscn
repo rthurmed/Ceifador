@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://src/BackgroundParallax.tscn" type="PackedScene" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://assets/sfx/game-pass-stage-pickupCoin.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sfx/player-death-explosion.wav" type="AudioStream" id=10]
 [ext_resource path="res://modules/Juice/Camera/Shake.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/sprites/ui/framing.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/ui/lifebar-progress blue.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/ui/lifebar-over.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/ui/lifebar-progress.png" type="Texture" id=15]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -136,39 +140,78 @@ one_way_collision = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Retries" type="Control" parent="UI"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -15.0
-script = ExtResource( 6 )
+[node name="Sprite" type="Sprite" parent="UI"]
+position = Vector2( 192, 144 )
+texture = ExtResource( 12 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Retries"]
+[node name="StatusBars" type="Control" parent="UI"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -33.0
-margin_top = -18.0
-margin_right = 33.0
+margin_left = 137.0
+margin_top = -133.0
+margin_right = 186.0
+margin_bottom = 4.0
+
+[node name="Life" type="TextureProgress" parent="UI/StatusBars"]
+margin_left = -10.0
+margin_top = 4.0
+margin_bottom = 118.0
+value = 100.0
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 15 )
+fill_mode = 3
+
+[node name="Energy" type="TextureProgress" parent="UI/StatusBars"]
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 16.0
+margin_bottom = 118.0
+value = 100.0
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 13 )
+fill_mode = 3
+
+[node name="Retries" type="Control" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -192.0
+margin_right = -116.0
+margin_bottom = 107.0
+script = ExtResource( 6 )
+
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/Retries"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -22.0
+margin_top = 17.0
+margin_right = -10.0
+margin_bottom = 83.0
 
 [node name="RetryIcon1" parent="UI/Retries/HBoxContainer" instance=ExtResource( 7 )]
+margin_right = 12.0
+margin_bottom = 10.0
 
 [node name="RetryIcon2" parent="UI/Retries/HBoxContainer" instance=ExtResource( 7 )]
-margin_left = 14.0
-margin_right = 24.0
+margin_top = 14.0
+margin_right = 12.0
+margin_bottom = 24.0
 
 [node name="RetryIcon3" parent="UI/Retries/HBoxContainer" instance=ExtResource( 7 )]
-margin_left = 28.0
-margin_right = 38.0
+margin_top = 28.0
+margin_right = 12.0
+margin_bottom = 38.0
 
 [node name="RetryIcon4" parent="UI/Retries/HBoxContainer" instance=ExtResource( 7 )]
-margin_left = 42.0
-margin_right = 52.0
+margin_top = 42.0
+margin_right = 12.0
+margin_bottom = 52.0
 
 [node name="RetryIcon5" parent="UI/Retries/HBoxContainer" instance=ExtResource( 7 )]
-margin_left = 56.0
-margin_right = 66.0
+margin_top = 56.0
+margin_right = 12.0
+margin_bottom = 66.0
 
 [node name="Pause" parent="." instance=ExtResource( 8 )]
 
