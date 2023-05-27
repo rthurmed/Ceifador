@@ -65,6 +65,9 @@ func apply_shooting(_delta):
 	if Input.is_action_just_pressed("player_shoot"):
 		gun.shoot()
 		gun.prepare_shooting()
+	
+	if Input.is_action_just_released("player_shoot"):
+		gun.force_stop_shooting()
 
 
 func _on_Area_area_entered(area):

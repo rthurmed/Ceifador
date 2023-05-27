@@ -92,6 +92,8 @@ scale = Vector2( 1, -1 )
 bullet_scene = ExtResource( 2 )
 time_between_shots = 0.4
 
+[node name="Timer" type="Timer" parent="Gun"]
+
 [node name="Health" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 10 )
 

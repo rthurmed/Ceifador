@@ -55,6 +55,13 @@ func prepare_shooting():
 	delay.start()
 
 
+func force_stop_shooting():
+	delay.stop()
+	animation.stop()
+	animation.seek(0.0, true)
+	shooting = false
+
+
 func _on_Delay_timeout():
 	animation.play("prepare")
 
