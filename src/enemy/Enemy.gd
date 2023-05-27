@@ -23,6 +23,9 @@ func _ready():
 	collision_layer = COLLISION_LAYER
 	collision_mask = COLLISION_MASK
 	
+	monitorable = true
+	monitoring = true
+	
 	add_to_group(GROUP)
 	
 	if external_life_bar_path != "":
