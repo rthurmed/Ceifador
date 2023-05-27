@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/sfx/explosion-enemy.wav" type="AudioStream" id=1]
 [ext_resource path="res://assets/sfx/explosion-death-enemy.wav" type="AudioStream" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://src/common/Gun.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/enemy/EnemyBullet.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/sprites/enemy-mage-Sheet-outline.png" type="Texture" id=11]
+[ext_resource path="res://modules/Juice/Sprite/Blink.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/animation/enemy/death.tres" type="Animation" id=13]
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 11 )
@@ -102,55 +104,16 @@ tracks/4/keys = {
 "update": 0,
 "values": [ true ]
 }
-
-[sub_resource type="Animation" id=2]
-resource_name = "death"
-length = 0.8
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Audio/Death:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 0.90125 ),
-"update": 1,
-"values": [ true, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
+tracks/5/type = "value"
+tracks/5/path = NodePath("AnimatedSprite/Blink:blink")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:monitorable")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 
@@ -167,6 +130,9 @@ texture = ExtResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
 frame = 2
+
+[node name="Blink" parent="AnimatedSprite" instance=ExtResource( 12 )]
+target_path = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
@@ -219,4 +185,4 @@ volume_db = -10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
-anims/death = SubResource( 2 )
+anims/death = ExtResource( 13 )
