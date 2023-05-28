@@ -53,6 +53,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_released("cheat_skip"):
 		for enemy in stage_current_enemies:
+			if not is_instance_valid(enemy): continue
 			enemy.health.hit(-9999)
 	
 	if game_over_screen.visible and Input.is_action_just_released("reset"):
