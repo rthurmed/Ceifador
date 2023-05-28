@@ -99,7 +99,7 @@ current = true
 [node name="Shake" parent="Camera" instance=ExtResource( 11 )]
 camera_path = NodePath("..")
 
-[node name="StageHolder" type="Node2D" parent="." groups=["stage"]]
+[node name="StageHolder" type="Node2D" parent="."]
 pause_mode = 1
 
 [node name="PlayerPath" type="Path2D" parent="."]
