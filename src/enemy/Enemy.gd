@@ -44,7 +44,7 @@ func _ready():
 			my_guns.append(that_gun)
 			that_gun.connect("shot", self, '_on_Gun_shot')
 	
-	if get_node("AnimatedSprite") != null:
+	if has_node("AnimatedSprite"):
 		get_node("AnimatedSprite").playing = true
 
 
