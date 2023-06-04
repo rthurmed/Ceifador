@@ -105,5 +105,6 @@ func _on_Health_damage():
 
 
 func _on_StealArea_stole_energy():
+	if energy.hp < energy.max_hp: 
+		audio_energy_heal.play()
 	energy.heal(ENERGY_HEAL_BY_STEALING)
-	audio_energy_heal.play()
