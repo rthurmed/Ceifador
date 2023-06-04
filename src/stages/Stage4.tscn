@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/stages/Stage.gd" type="Script" id=1]
 [ext_resource path="res://src/util/AutoPathFollow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/enemy/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/enemy/Mage.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sprites/ui/debug-stage-limits.png" type="Texture" id=5]
 
 [sub_resource type="Curve2D" id=4]
 _data = {
@@ -38,3 +39,8 @@ loop = false
 
 [node name="Enemy" parent="Enemy1Path3/AutoPathFollow" instance=ExtResource( 3 )]
 should_drop_hp = true
+
+[node name="DebugGameArea" type="Sprite" parent="."]
+visible = false
+position = Vector2( 112, 144 )
+texture = ExtResource( 5 )

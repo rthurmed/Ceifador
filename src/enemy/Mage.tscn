@@ -140,6 +140,10 @@ rotation = 1.5708
 shape = SubResource( 9 )
 
 [node name="Rotating" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 2 )
+movement_deg = 24
+time_slot = 0.8
+time_delay = 0.2
 
 [node name="Gun" parent="Rotating" instance=ExtResource( 9 )]
 rotation = 1.5708
