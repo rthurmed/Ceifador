@@ -6,9 +6,9 @@ This project was made with Godot v3.5.2, Aseprite v1.2.40 and Jsfxr
 
 ## Instructions
 
-- Arrows/IJKL: Move
-- Z/Space: Shoot
-- Escape: Pause
+- Arrows/IJKL/WASD: Move
+- Z/Space/Enter: Shoot
+- P/Escape: Pause
 
 Drain the enemy souls to gain energy. This is needed for shooting magic bullets.
 
