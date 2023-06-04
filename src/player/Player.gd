@@ -7,7 +7,7 @@ const SPEED_CHANGE_MULTIPLIER = 8 # the lower, the more slippery
 const DAMAGE_COLLISION = -3
 const ENERGY_COST_BULLET = 1
 const ENERGY_COST_DASH = 3
-const ENERGY_HEAL_BY_STEALING = 2
+const ENERGY_HEAL_BY_STEALING = 1
 const HEAL_BY_DROPPED_HP = 10
 const ENERGY_BY_DROPPED_HP = 10
 
